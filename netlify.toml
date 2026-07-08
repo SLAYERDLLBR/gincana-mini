@@ -1,7 +1,7 @@
 [build]
-  command = "npm install && npm run build"
+  command = "cd apps/web-online && npm install && npm run build"
   publish = "apps/web-online/.next"
-  functions = "apps/web-online/.netlify/functions"
+  base = "."
 
 [build.environment]
   NODE_VERSION = "20"
