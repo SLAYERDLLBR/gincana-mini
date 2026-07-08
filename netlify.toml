@@ -1,12 +1,7 @@
 [build]
-  command = "cd apps/web-online && npm install && npm run build"
-  publish = "apps/web-online/.next"
-  base = "."
+  base = "apps/web-online"
+  command = "npm install && npm run build"
+  publish = ".next"
 
 [build.environment]
   NODE_VERSION = "20"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
