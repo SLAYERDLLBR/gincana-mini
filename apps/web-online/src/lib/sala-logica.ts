@@ -20,7 +20,13 @@ export interface PerguntaArmazenada {
 
 const BANCO = bancoPerguntas as PerguntaArmazenada[];
 
-export interface JogadorEstado {
+/**
+ * Perfil + estatísticas de um jogador. Cada jogador vive na sua PRÓPRIA chave
+ * de armazenamento (jogador:{sala}:{id}) — ações de um jogador (trocar de
+ * equipe, marcar pronto) NUNCA disputam a mesma chave que outro jogador está
+ * escrevendo, o que elimina o principal ponto de perda de dados sob carga.
+ */
+export interface JogadorPerfil {
   id: string;
   nomeSessao: string;
   idade: number;
@@ -36,8 +42,13 @@ export interface JogadorEstado {
   temposRespostaMs: number[];
 }
 
+/** Registro imutável de uma resposta, também em chave própria
+ * (resposta:{sala}:{indiceQuestao}:{jogadorId}) — cada jogador só escreve na
+ * própria resposta, nunca disputando com as respostas de outros jogadores
+ * para a mesma pergunta. */
 export interface RespostaRegistrada {
   jogadorId: string;
+  indiceQuestao: number;
   perguntaId: string;
   alternativaEscolhida: number | null;
   correta: boolean;
@@ -64,18 +75,19 @@ export interface DestaquesFinais {
   ranking: { nomeSessao: string; equipe: Equipe; pontuacao: number }[];
 }
 
-export interface SalaEstado {
+/** Metadados da sala — a ÚNICA parte do estado que continua "compartilhada".
+ * É escrita com pouca frequência (criação, início, e a transição entre
+ * perguntas), então o risco de disputa é muito menor do que tentar guardar
+ * a lista inteira de jogadores no mesmo objeto. */
+export interface SalaMeta {
   codigoSala: string;
   status: "LOBBY" | "EM_ANDAMENTO" | "FINALIZADA";
   organizadorId: string;
-  jogadores: JogadorEstado[];
   perguntasSelecionadasIds: string[];
   indiceAtual: number;
   perguntaComecouEm: number | null;
   alternativasRodadaAtual: string[];
   indiceCorretoRodadaAtual: number | null;
-  respostasQuestaoAtual: Record<string, RespostaRegistrada>;
-  historicoRespostas: RespostaRegistrada[];
   revelacaoAtual: RevelacaoAtual | null;
   destaquesFinais: DestaquesFinais | null;
   criadaEm: number;
@@ -89,20 +101,17 @@ export function gerarCodigoSala(): string {
   return codigo;
 }
 
-export function criarSalaEstadoInicial(codigoSala: string): SalaEstado {
+export function criarSalaMetaInicial(codigoSala: string, organizadorId: string): SalaMeta {
   const agora = Date.now();
   return {
     codigoSala,
     status: "LOBBY",
-    organizadorId: "",
-    jogadores: [],
+    organizadorId,
     perguntasSelecionadasIds: [],
     indiceAtual: -1,
     perguntaComecouEm: null,
     alternativasRodadaAtual: [],
     indiceCorretoRodadaAtual: null,
-    respostasQuestaoAtual: {},
-    historicoRespostas: [],
     revelacaoAtual: null,
     destaquesFinais: null,
     criadaEm: agora,
@@ -110,31 +119,37 @@ export function criarSalaEstadoInicial(codigoSala: string): SalaEstado {
   };
 }
 
-export function sugerirEquipeBalanceada(sala: SalaEstado): Equipe {
-  const azul = sala.jogadores.filter((j) => j.equipe === "AZUL").length;
-  const vermelho = sala.jogadores.filter((j) => j.equipe === "VERMELHO").length;
+export function sugerirEquipeBalanceada(jogadores: JogadorPerfil[]): Equipe {
+  const azul = jogadores.filter((j) => j.equipe === "AZUL").length;
+  const vermelho = jogadores.filter((j) => j.equipe === "VERMELHO").length;
   return azul <= vermelho ? "AZUL" : "VERMELHO";
 }
 
-export function adicionarJogador(
-  sala: SalaEstado,
+export function validarPerfil(perfil: PerfilJogadorInput): { ok: true } | { ok: false; erro: string } {
+  if (perfil.idade < 6 || perfil.idade > 11) return { ok: false, erro: "A idade deve estar entre 6 e 11 anos." };
+  if (!perfil.nomeSessao?.trim()) return { ok: false, erro: "Digite um nome para entrar na sala." };
+  return { ok: true };
+}
+
+export function podeEntrarNaSala(meta: SalaMeta, totalJogadores: number): { ok: true } | { ok: false; erro: string } {
+  if (meta.status !== "LOBBY") return { ok: false, erro: "Esta partida já começou. Peça ao professor para criar uma nova sala." };
+  if (totalJogadores >= MAX_JOGADORES) return { ok: false, erro: "Esta sala já está cheia." };
+  return { ok: true };
+}
+
+export function criarJogadorPerfil(
   jogadorId: string,
   perfil: PerfilJogadorInput,
   organizador: boolean,
-): { ok: true } | { ok: false; erro: string } {
-  if (sala.status !== "LOBBY") return { ok: false, erro: "Esta partida já começou." };
-  if (sala.jogadores.length >= MAX_JOGADORES) return { ok: false, erro: "Sala cheia." };
-  if (perfil.idade < 6 || perfil.idade > 11) return { ok: false, erro: "Idade deve ser entre 6 e 11 anos." };
-  if (!perfil.nomeSessao?.trim()) return { ok: false, erro: "Digite um nome." };
-  if (sala.jogadores.some((j) => j.id === jogadorId)) return { ok: true }; // já estava na sala (reconexão)
-
-  sala.jogadores.push({
+  jogadoresExistentes: JogadorPerfil[],
+): JogadorPerfil {
+  return {
     id: jogadorId,
     nomeSessao: perfil.nomeSessao.trim().slice(0, 20),
     idade: perfil.idade,
     avatar: perfil.avatar,
     corFavorita: perfil.corFavorita,
-    equipe: sugerirEquipeBalanceada(sala),
+    equipe: sugerirEquipeBalanceada(jogadoresExistentes),
     pronto: false,
     organizador,
     pontuacao: 0,
@@ -142,23 +157,7 @@ export function adicionarJogador(
     sequenciaAtual: 0,
     maiorSequencia: 0,
     temposRespostaMs: [],
-  });
-  if (organizador) sala.organizadorId = jogadorId;
-  return { ok: true };
-}
-
-export function escolherEquipe(sala: SalaEstado, jogadorId: string, equipe: Equipe): void {
-  const jogador = sala.jogadores.find((j) => j.id === jogadorId);
-  if (jogador) jogador.equipe = equipe;
-}
-
-export function marcarPronto(sala: SalaEstado, jogadorId: string, pronto: boolean): void {
-  const jogador = sala.jogadores.find((j) => j.id === jogadorId);
-  if (jogador) jogador.pronto = pronto;
-}
-
-export function placarEquipe(sala: SalaEstado, equipe: Equipe): number {
-  return sala.jogadores.filter((j) => j.equipe === equipe).reduce((soma, j) => soma + j.pontuacao, 0);
+  };
 }
 
 export function tempoLimitePorDificuldade(_dificuldade: Dificuldade): number {
@@ -199,130 +198,213 @@ function selecionarPerguntas(idadeAlvo: number): PerguntaArmazenada[] {
   return embaralhar(selecionadas);
 }
 
-export function iniciarPartida(sala: SalaEstado): { ok: true } | { ok: false; erro: string } {
-  if (sala.status !== "LOBBY") return { ok: false, erro: "A partida já foi iniciada." };
-  if (sala.jogadores.length < 2) return { ok: false, erro: "É preciso pelo menos 2 jogadores para iniciar." };
-  if (!sala.jogadores.every((j) => j.pronto)) {
-    return { ok: false, erro: "Nem todos os jogadores confirmaram que estão prontos." };
-  }
-
-  const idadeAlvo = Math.round(sala.jogadores.reduce((s, j) => s + j.idade, 0) / sala.jogadores.length);
-  const selecionadas = selecionarPerguntas(idadeAlvo);
-  if (selecionadas.length < 10) {
-    return { ok: false, erro: "Banco de perguntas insuficiente para esta faixa etária." };
-  }
-
-  sala.perguntasSelecionadasIds = selecionadas.map((p) => p.id);
-  sala.status = "EM_ANDAMENTO";
-  sala.indiceAtual = 0;
-  sala.perguntaComecouEm = Date.now() + ATRASO_INICIAL_MS;
-  prepararAlternativasRodada(sala);
-  return { ok: true };
-}
-
 function perguntaPorId(id: string): PerguntaArmazenada | undefined {
   return BANCO.find((p) => p.id === id);
 }
 
-export function perguntaAtual(sala: SalaEstado): PerguntaArmazenada | null {
-  const id = sala.perguntasSelecionadasIds[sala.indiceAtual];
+export function perguntaAtual(meta: SalaMeta): PerguntaArmazenada | null {
+  const id = meta.perguntasSelecionadasIds[meta.indiceAtual];
   return id ? perguntaPorId(id) ?? null : null;
 }
 
-function prepararAlternativasRodada(sala: SalaEstado): void {
-  const pergunta = perguntaAtual(sala);
-  if (!pergunta) return;
+function prepararAlternativas(pergunta: PerguntaArmazenada): { alternativas: string[]; indiceCorreto: number } {
   const indices = pergunta.alternativas.map((_, i) => i);
   for (let i = indices.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [indices[i], indices[j]] = [indices[j], indices[i]];
   }
-  sala.alternativasRodadaAtual = indices.map((i) => pergunta.alternativas[i]);
-  sala.indiceCorretoRodadaAtual = indices.indexOf(pergunta.respostaCorreta);
-  sala.respostasQuestaoAtual = {};
-}
-
-export function submeterResposta(sala: SalaEstado, jogadorId: string, alternativaEscolhida: number | null): void {
-  const jogador = sala.jogadores.find((j) => j.id === jogadorId);
-  const pergunta = perguntaAtual(sala);
-  if (!jogador || !pergunta || sala.perguntaComecouEm === null) return;
-  if (sala.respostasQuestaoAtual[jogadorId]) return;
-  if (Date.now() < sala.perguntaComecouEm) return; // ainda na contagem regressiva
-
-  const tempoLimiteMs = tempoLimitePorDificuldade(pergunta.dificuldade) * 1000;
-  const tempoRespostaMs = Math.min(tempoLimiteMs, Date.now() - sala.perguntaComecouEm);
-  const correta = alternativaEscolhida === sala.indiceCorretoRodadaAtual;
-
-  // Pontuação baseada SOMENTE em acerto/erro — o tempo de resposta é
-  // registrado apenas para estatísticas (ex: "jogador mais rápido"), sem
-  // nenhum efeito no placar.
-  let pontosGanhos = 0;
-  if (correta) {
-    jogador.sequenciaAtual += 1;
-    jogador.acertos += 1;
-    jogador.maiorSequencia = Math.max(jogador.maiorSequencia, jogador.sequenciaAtual);
-    pontosGanhos = PONTOS_POR_ACERTO;
-  } else {
-    jogador.sequenciaAtual = 0;
-  }
-
-  jogador.pontuacao += pontosGanhos;
-  jogador.temposRespostaMs.push(tempoRespostaMs);
-
-  const registro: RespostaRegistrada = { jogadorId, perguntaId: pergunta.id, alternativaEscolhida, correta, tempoRespostaMs, pontosGanhos };
-  sala.respostasQuestaoAtual[jogadorId] = registro;
-  sala.historicoRespostas.push(registro);
-
-  if (Object.keys(sala.respostasQuestaoAtual).length >= sala.jogadores.length) {
-    revelarResposta(sala);
-  }
-}
-
-function revelarResposta(sala: SalaEstado): void {
-  const pergunta = perguntaAtual(sala);
-  if (!pergunta || sala.revelacaoAtual) return;
-  sala.revelacaoAtual = {
-    perguntaId: pergunta.id,
-    alternativaCorreta: sala.indiceCorretoRodadaAtual ?? 0,
-    explicacao: pergunta.explicacao,
-    placarAzul: placarEquipe(sala, "AZUL"),
-    placarVermelho: placarEquipe(sala, "VERMELHO"),
-    revelarEm: Date.now(),
+  return {
+    alternativas: indices.map((i) => pergunta.alternativas[i]),
+    indiceCorreto: indices.indexOf(pergunta.respostaCorreta),
   };
 }
 
-function avancarOuFinalizar(sala: SalaEstado): void {
-  sala.revelacaoAtual = null;
-  sala.indiceAtual += 1;
-  if (sala.indiceAtual >= sala.perguntasSelecionadasIds.length) {
-    finalizarPartida(sala);
-    return;
+export function podeIniciarPartida(meta: SalaMeta, jogadores: JogadorPerfil[]): { ok: true } | { ok: false; erro: string } {
+  if (meta.status !== "LOBBY") return { ok: false, erro: "A partida já foi iniciada." };
+  if (jogadores.length < 2) return { ok: false, erro: "É preciso pelo menos 2 jogadores para iniciar." };
+  if (!jogadores.every((j) => j.pronto)) {
+    return { ok: false, erro: "Nem todos os jogadores confirmaram que estão prontos." };
   }
-  sala.perguntaComecouEm = Date.now();
-  prepararAlternativasRodada(sala);
+  return { ok: true };
 }
 
-function finalizarPartida(sala: SalaEstado): void {
-  sala.status = "FINALIZADA";
-  const placarAzul = placarEquipe(sala, "AZUL");
-  const placarVermelho = placarEquipe(sala, "VERMELHO");
-  const melhor = [...sala.jogadores].sort((a, b) => b.pontuacao - a.pontuacao)[0] ?? null;
+export function prepararInicioPartida(meta: SalaMeta, jogadores: JogadorPerfil[]): SalaMeta | null {
+  const idadeAlvo = Math.round(jogadores.reduce((s, j) => s + j.idade, 0) / jogadores.length);
+  const selecionadas = selecionarPerguntas(idadeAlvo);
+  if (selecionadas.length < 10) return null;
+
+  const { alternativas, indiceCorreto } = prepararAlternativas(selecionadas[0]);
+
+  return {
+    ...meta,
+    perguntasSelecionadasIds: selecionadas.map((p) => p.id),
+    status: "EM_ANDAMENTO",
+    indiceAtual: 0,
+    perguntaComecouEm: Date.now() + ATRASO_INICIAL_MS,
+    alternativasRodadaAtual: alternativas,
+    indiceCorretoRodadaAtual: indiceCorreto,
+    revelacaoAtual: null,
+  };
+}
+
+/** Calcula (sem gravar nada) o resultado de UMA resposta. Retorna null se a
+ * resposta não deve ser aceita (fora de sincronia, tempo esgotado, etc). */
+export function registrarResposta(
+  meta: SalaMeta,
+  jogadorId: string,
+  perguntaId: string,
+  alternativaEscolhida: number | null,
+): RespostaRegistrada | null {
+  const pergunta = perguntaAtual(meta);
+  if (!pergunta || meta.perguntaComecouEm === null) return null;
+  if (pergunta.id !== perguntaId) return null; // cliente estava numa pergunta que já mudou
+  if (meta.revelacaoAtual) return null; // já revelou o gabarito, não aceita mais respostas
+  if (Date.now() < meta.perguntaComecouEm) return null; // ainda na contagem regressiva
+
+  const tempoLimiteMs = tempoLimitePorDificuldade(pergunta.dificuldade) * 1000;
+  const tempoRespostaMs = Math.min(tempoLimiteMs, Date.now() - meta.perguntaComecouEm);
+  const correta = alternativaEscolhida === meta.indiceCorretoRodadaAtual;
+
+  return {
+    jogadorId,
+    indiceQuestao: meta.indiceAtual,
+    perguntaId: pergunta.id,
+    alternativaEscolhida,
+    correta,
+    tempoRespostaMs,
+    pontosGanhos: correta ? PONTOS_POR_ACERTO : 0,
+  };
+}
+
+function somarPlacar(jogadores: JogadorPerfil[], equipe: Equipe): number {
+  return jogadores.filter((j) => j.equipe === equipe).reduce((soma, j) => soma + j.pontuacao, 0);
+}
+
+export function calcularDestaquesFinais(jogadores: JogadorPerfil[]): DestaquesFinais {
+  const placarAzul = somarPlacar(jogadores, "AZUL");
+  const placarVermelho = somarPlacar(jogadores, "VERMELHO");
+  const melhor = [...jogadores].sort((a, b) => b.pontuacao - a.pontuacao)[0] ?? null;
   const maisRapido =
-    sala.jogadores
+    jogadores
       .filter((j) => j.temposRespostaMs.length > 0)
       .map((j) => ({ nomeSessao: j.nomeSessao, tempoMedioMs: j.temposRespostaMs.reduce((a, b) => a + b, 0) / j.temposRespostaMs.length }))
       .sort((a, b) => a.tempoMedioMs - b.tempoMedioMs)[0] ?? null;
-  const maiorSequenciaJogador = [...sala.jogadores].sort((a, b) => b.maiorSequencia - a.maiorSequencia)[0] ?? null;
+  const maiorSequenciaJogador = [...jogadores].sort((a, b) => b.maiorSequencia - a.maiorSequencia)[0] ?? null;
 
-  sala.destaquesFinais = {
+  return {
     equipeVencedora: placarAzul === placarVermelho ? "EMPATE" : placarAzul > placarVermelho ? "AZUL" : "VERMELHO",
     placarAzul,
     placarVermelho,
     melhorJogador: melhor ? { nomeSessao: melhor.nomeSessao, pontuacao: melhor.pontuacao } : null,
     maisRapido,
-    maiorSequencia: maiorSequenciaJogador ? { nomeSessao: maiorSequenciaJogador.nomeSessao, sequencia: maiorSequenciaJogador.maiorSequencia } : null,
-    ranking: [...sala.jogadores].sort((a, b) => b.pontuacao - a.pontuacao).map((j) => ({ nomeSessao: j.nomeSessao, equipe: j.equipe, pontuacao: j.pontuacao })),
+    maiorSequencia: maiorSequenciaJogador
+      ? { nomeSessao: maiorSequenciaJogador.nomeSessao, sequencia: maiorSequenciaJogador.maiorSequencia }
+      : null,
+    ranking: [...jogadores].sort((a, b) => b.pontuacao - a.pontuacao).map((j) => ({ nomeSessao: j.nomeSessao, equipe: j.equipe, pontuacao: j.pontuacao })),
   };
+}
+
+export interface ResultadoTransicao {
+  metaAtualizada: SalaMeta;
+  jogadoresAtualizados: JogadorPerfil[];
+  jogadoresMudaram: boolean;
+}
+
+/**
+ * Avalia se a sala precisa avançar de estado (revelar gabarito, avançar de
+ * pergunta, ou finalizar). É uma função PURA — não lê nem grava nada — e é
+ * seguro chamá-la várias vezes em paralelo: como ela sempre recalcula os
+ * valores a partir dos mesmos dados de entrada (em vez de incrementar um
+ * valor que pode estar sendo alterado por outra requisição ao mesmo tempo),
+ * mesmo que duas chamadas concorrentes cheguem a esse ponto, o resultado
+ * final gravado é o mesmo — sem perda de pontos.
+ */
+export function avaliarTransicao(
+  meta: SalaMeta,
+  jogadores: JogadorPerfil[],
+  respostasQuestaoAtual: RespostaRegistrada[],
+): ResultadoTransicao | null {
+  if (meta.status !== "EM_ANDAMENTO") return null;
+  const pergunta = perguntaAtual(meta);
+  if (!pergunta || meta.perguntaComecouEm === null) return null;
+
+  const agora = Date.now();
+  const tempoLimiteMs = tempoLimitePorDificuldade(pergunta.dificuldade) * 1000;
+  const todosResponderam = jogadores.length > 0 && respostasQuestaoAtual.length >= jogadores.length;
+  const tempoEsgotado = agora >= meta.perguntaComecouEm + tempoLimiteMs;
+
+  // 1) Revelar o gabarito desta pergunta (aplica a pontuação de quem respondeu)
+  if (!meta.revelacaoAtual && (todosResponderam || tempoEsgotado)) {
+    const jogadoresAtualizados = jogadores.map((jogador) => {
+      const resposta = respostasQuestaoAtual.find((r) => r.jogadorId === jogador.id);
+      if (!resposta) {
+        // Não respondeu a tempo: quebra a sequência de acertos, sem pontuar.
+        return jogador.sequenciaAtual === 0 ? jogador : { ...jogador, sequenciaAtual: 0 };
+      }
+      const sequenciaAtual = resposta.correta ? jogador.sequenciaAtual + 1 : 0;
+      return {
+        ...jogador,
+        pontuacao: jogador.pontuacao + resposta.pontosGanhos,
+        acertos: jogador.acertos + (resposta.correta ? 1 : 0),
+        sequenciaAtual,
+        maiorSequencia: Math.max(jogador.maiorSequencia, sequenciaAtual),
+        temposRespostaMs: [...jogador.temposRespostaMs, resposta.tempoRespostaMs],
+      };
+    });
+
+    return {
+      metaAtualizada: {
+        ...meta,
+        revelacaoAtual: {
+          perguntaId: pergunta.id,
+          alternativaCorreta: meta.indiceCorretoRodadaAtual ?? 0,
+          explicacao: pergunta.explicacao,
+          placarAzul: somarPlacar(jogadoresAtualizados, "AZUL"),
+          placarVermelho: somarPlacar(jogadoresAtualizados, "VERMELHO"),
+          revelarEm: agora,
+        },
+      },
+      jogadoresAtualizados,
+      jogadoresMudaram: true,
+    };
+  }
+
+  // 2) Avançar para a próxima pergunta (ou finalizar, se essa era a última)
+  if (meta.revelacaoAtual && agora >= meta.revelacaoAtual.revelarEm + PAUSA_REVELACAO_MS) {
+    const proximoIndice = meta.indiceAtual + 1;
+
+    if (proximoIndice >= meta.perguntasSelecionadasIds.length) {
+      return {
+        metaAtualizada: {
+          ...meta,
+          status: "FINALIZADA",
+          revelacaoAtual: null,
+          destaquesFinais: calcularDestaquesFinais(jogadores),
+        },
+        jogadoresAtualizados: jogadores,
+        jogadoresMudaram: false,
+      };
+    }
+
+    const proximaPergunta = perguntaPorId(meta.perguntasSelecionadasIds[proximoIndice]);
+    if (!proximaPergunta) return null;
+    const { alternativas, indiceCorreto } = prepararAlternativas(proximaPergunta);
+
+    return {
+      metaAtualizada: {
+        ...meta,
+        indiceAtual: proximoIndice,
+        perguntaComecouEm: agora,
+        alternativasRodadaAtual: alternativas,
+        indiceCorretoRodadaAtual: indiceCorreto,
+        revelacaoAtual: null,
+      },
+      jogadoresAtualizados: jogadores,
+      jogadoresMudaram: false,
+    };
+  }
+
+  return null;
 }
 
 export interface PerguntaPublica {
@@ -339,9 +421,9 @@ export interface PerguntaPublica {
 
 export interface EstadoPublico {
   codigoSala: string;
-  status: SalaEstado["status"];
+  status: SalaMeta["status"];
   organizadorId: string;
-  jogadores: JogadorEstado[];
+  jogadores: JogadorPerfil[];
   pergunta: PerguntaPublica | null;
   revelacao: Omit<RevelacaoAtual, "revelarEm"> | null;
   destaques: DestaquesFinais | null;
@@ -354,76 +436,47 @@ export interface EstadoPublico {
   agora: number;
 }
 
-function calcularPlacarAoVivo(sala: SalaEstado): EstadoPublico["placarAoVivo"] {
-  const placarAzul = placarEquipe(sala, "AZUL");
-  const placarVermelho = placarEquipe(sala, "VERMELHO");
-  const melhor = [...sala.jogadores].filter((j) => j.acertos > 0).sort((a, b) => b.acertos - a.acertos)[0] ?? null;
+export function paraEstadoPublico(meta: SalaMeta, jogadores: JogadorPerfil[]): EstadoPublico {
+  const pergunta = perguntaAtual(meta);
+  const placarAzul = somarPlacar(jogadores, "AZUL");
+  const placarVermelho = somarPlacar(jogadores, "VERMELHO");
+  const melhor = [...jogadores].filter((j) => j.acertos > 0).sort((a, b) => b.acertos - a.acertos)[0] ?? null;
 
   return {
-    placarAzul,
-    placarVermelho,
-    equipeLider: placarAzul === placarVermelho ? "EMPATE" : placarAzul > placarVermelho ? "AZUL" : "VERMELHO",
-    melhorJogador: melhor ? { nomeSessao: melhor.nomeSessao, acertos: melhor.acertos, equipe: melhor.equipe } : null,
-  };
-}
-
-export function paraEstadoPublico(sala: SalaEstado): EstadoPublico {
-  const pergunta = perguntaAtual(sala);
-
-  return {
-    codigoSala: sala.codigoSala,
-    status: sala.status,
-    organizadorId: sala.organizadorId,
-    jogadores: sala.jogadores,
+    codigoSala: meta.codigoSala,
+    status: meta.status,
+    organizadorId: meta.organizadorId,
+    jogadores,
     pergunta:
-      pergunta && sala.perguntaComecouEm !== null
+      pergunta && meta.perguntaComecouEm !== null
         ? {
             id: pergunta.id,
-            numero: sala.indiceAtual + 1,
-            total: sala.perguntasSelecionadasIds.length,
+            numero: meta.indiceAtual + 1,
+            total: meta.perguntasSelecionadasIds.length,
             enunciado: pergunta.enunciado,
-            alternativas: sala.alternativasRodadaAtual,
+            alternativas: meta.alternativasRodadaAtual,
             categoria: pergunta.categoria,
             dificuldade: pergunta.dificuldade,
             tempoLimiteSegundos: tempoLimitePorDificuldade(pergunta.dificuldade),
-            comecaEm: sala.perguntaComecouEm,
+            comecaEm: meta.perguntaComecouEm,
           }
         : null,
-    revelacao: sala.revelacaoAtual
+    revelacao: meta.revelacaoAtual
       ? {
-          perguntaId: sala.revelacaoAtual.perguntaId,
-          alternativaCorreta: sala.revelacaoAtual.alternativaCorreta,
-          explicacao: sala.revelacaoAtual.explicacao,
-          placarAzul: sala.revelacaoAtual.placarAzul,
-          placarVermelho: sala.revelacaoAtual.placarVermelho,
+          perguntaId: meta.revelacaoAtual.perguntaId,
+          alternativaCorreta: meta.revelacaoAtual.alternativaCorreta,
+          explicacao: meta.revelacaoAtual.explicacao,
+          placarAzul: meta.revelacaoAtual.placarAzul,
+          placarVermelho: meta.revelacaoAtual.placarVermelho,
         }
       : null,
-    destaques: sala.destaquesFinais,
-    placarAoVivo: calcularPlacarAoVivo(sala),
+    destaques: meta.destaquesFinais,
+    placarAoVivo: {
+      placarAzul,
+      placarVermelho,
+      equipeLider: placarAzul === placarVermelho ? "EMPATE" : placarAzul > placarVermelho ? "AZUL" : "VERMELHO",
+      melhorJogador: melhor ? { nomeSessao: melhor.nomeSessao, acertos: melhor.acertos, equipe: melhor.equipe } : null,
+    },
     agora: Date.now(),
   };
-}
-/** Chamado em toda leitura/ação: avança o estado do jogo com base no relógio,
- * já que não existe um timer de servidor no modelo serverless (a "virada de
- * pergunta" acontece de forma preguiçosa, disparada pela próxima consulta). */
-export function sincronizarEstado(sala: SalaEstado): boolean {
-  if (sala.status !== "EM_ANDAMENTO") return false;
-  const pergunta = perguntaAtual(sala);
-  if (!pergunta || sala.perguntaComecouEm === null) return false;
-
-  let alterado = false;
-  const agora = Date.now();
-  const tempoLimiteMs = tempoLimitePorDificuldade(pergunta.dificuldade) * 1000;
-
-  if (!sala.revelacaoAtual && agora >= sala.perguntaComecouEm + tempoLimiteMs) {
-    revelarResposta(sala);
-    alterado = true;
-  }
-
-  if (sala.revelacaoAtual && agora >= sala.revelacaoAtual.revelarEm + PAUSA_REVELACAO_MS) {
-    avancarOuFinalizar(sala);
-    alterado = true;
-  }
-
-  return alterado;
 }

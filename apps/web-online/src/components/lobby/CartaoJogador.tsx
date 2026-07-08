@@ -1,9 +1,9 @@
 "use client";
 
 import { AVATARES } from "@/lib/tipos";
-import type { JogadorEstado } from "@/lib/sala-logica";
+import type { JogadorPerfil } from "@/lib/sala-logica";
 
-export function CartaoJogador({ jogador, souEu }: { jogador: JogadorEstado; souEu: boolean }) {
+export function CartaoJogador({ jogador, souEu }: { jogador: JogadorPerfil; souEu: boolean }) {
   const avatar = AVATARES.find((a) => a.id === jogador.avatar);
 
   return (
