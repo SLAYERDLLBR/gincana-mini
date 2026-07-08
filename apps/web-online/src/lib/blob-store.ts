@@ -49,3 +49,11 @@ export async function listarRespostasDaQuestao(codigoSala: string, indiceQuestao
   const respostas = await Promise.all(blobs.map((b) => s.get(b.key, { type: "json" }) as Promise<RespostaRegistrada | null>));
   return respostas.filter((r): r is RespostaRegistrada => r !== null);
 }
+
+/** Conta quantas chaves existem com o prefixo dado SEM baixar o conteúdo de
+ * cada uma — muito mais barato que listar + buscar tudo, usado nas
+ * checagens frequentes de "quantos já responderam"/"quantos jogadores". */
+export async function contarChaves(prefixo: string): Promise<number> {
+  const { blobs } = await store().list({ prefix: prefixo });
+  return blobs.length;
+}

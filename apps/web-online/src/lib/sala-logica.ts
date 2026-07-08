@@ -1,7 +1,7 @@
 import type { AvatarId, Categoria, CorFavoritaId, Dificuldade, Equipe, PerfilJogadorInput } from "@/lib/tipos";
 import bancoPerguntas from "@/data/perguntas.json";
 
-const PAUSA_REVELACAO_MS = 6000;
+export const PAUSA_REVELACAO_MS = 6000;
 const ATRASO_INICIAL_MS = 15000; // contagem regressiva de 15s antes da 1ª pergunta
 const TEMPO_RESPOSTA_SEGUNDOS = 30; // tempo fixo para responder, igual em todas as dificuldades
 const MAX_JOGADORES = 40;

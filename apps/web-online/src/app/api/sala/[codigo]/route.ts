@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { Equipe, PerfilJogadorInput } from "@/lib/tipos";
 import {
+  contarChaves,
   lerJogador,
   lerMeta,
   lerResposta,
@@ -13,12 +14,16 @@ import {
 import {
   avaliarTransicao,
   criarJogadorPerfil,
+  PAUSA_REVELACAO_MS,
   paraEstadoPublico,
+  perguntaAtual,
   podeEntrarNaSala,
   podeIniciarPartida,
   prepararInicioPartida,
   registrarResposta,
+  tempoLimitePorDificuldade,
   validarPerfil,
+  type JogadorPerfil,
   type SalaMeta,
 } from "@/lib/sala-logica";
 
@@ -26,59 +31,92 @@ interface Contexto {
   params: { codigo: string };
 }
 
-/** Avança o estado da sala (revelar gabarito / próxima pergunta / fim de
- * jogo) se for a hora — chamado em toda leitura e ação, com uma função pura
- * e idempotente por trás, então é seguro mesmo com várias requisições
- * concorrentes chegando aqui ao mesmo tempo.
- *
- * Proteção extra: como o cálculo (ler jogadores + respostas + decidir) pode
- * levar um tempinho, uma requisição atrasada poderia gravar um resultado
- * obsoleto por cima de um estado mais novo (o jogo "voltando no tempo").
- * Por isso, logo antes de gravar, relemos a meta e comparamos a "versão" —
- * se alguém mais já avançou nesse meio-tempo, descartamos nosso cálculo em
- * vez de sobrescrever. */
-async function sincronizar(codigoSala: string, meta: SalaMeta): Promise<SalaMeta> {
-  if (meta.status !== "EM_ANDAMENTO") return meta;
+/** Checagem BARATA (sem baixar o conteúdo de nenhum jogador/resposta) para
+ * saber se vale a pena fazer o processamento completo de uma transição.
+ * A esmagadora maioria das consultas (enquanto a pergunta ainda está sendo
+ * respondida) cai fora aqui, sem tocar em nenhum dado pesado. */
+async function precisaAvaliarTransicao(codigoSala: string, meta: SalaMeta): Promise<boolean> {
+  if (meta.status !== "EM_ANDAMENTO") return false;
+
+  if (meta.revelacaoAtual) {
+    return Date.now() >= meta.revelacaoAtual.revelarEm + PAUSA_REVELACAO_MS;
+  }
+
+  const pergunta = perguntaAtual(meta);
+  if (!pergunta || meta.perguntaComecouEm === null) return false;
+
+  const tempoLimiteMs = tempoLimitePorDificuldade(pergunta.dificuldade) * 1000;
+  if (Date.now() >= meta.perguntaComecouEm + tempoLimiteMs) return true;
+
+  const [totalJogadores, totalRespostas] = await Promise.all([
+    contarChaves(`jogador:${codigoSala}:`),
+    contarChaves(`resposta:${codigoSala}:${meta.indiceAtual}:`),
+  ]);
+  return totalJogadores > 0 && totalRespostas >= totalJogadores;
+}
+
+/** Busca a meta + jogadores atualizados em UMA passada, avançando o estado
+ * da sala (revelar gabarito / próxima pergunta / fim de jogo) se for a
+ * hora. Protegida contra escritas obsoletas por um contador de versão: se
+ * outra requisição já avançou o estado enquanto esta processava, o cálculo
+ * é descartado em vez de sobrescrever (evita o jogo "voltar no tempo"). */
+async function sincronizarEObterJogadores(
+  codigoSala: string,
+  metaInicial: SalaMeta,
+): Promise<{ meta: SalaMeta; jogadores: JogadorPerfil[] }> {
+  if (!(await precisaAvaliarTransicao(codigoSala, metaInicial))) {
+    return { meta: metaInicial, jogadores: await listarJogadores(codigoSala) };
+  }
 
   const jogadores = await listarJogadores(codigoSala);
-  const respostas = meta.indiceAtual >= 0 ? await listarRespostasDaQuestao(codigoSala, meta.indiceAtual) : [];
-  const resultado = avaliarTransicao(meta, jogadores, respostas);
-  if (!resultado) return meta;
+  const respostas =
+    metaInicial.indiceAtual >= 0 ? await listarRespostasDaQuestao(codigoSala, metaInicial.indiceAtual) : [];
+  const resultado = avaliarTransicao(metaInicial, jogadores, respostas);
+  if (!resultado) return { meta: metaInicial, jogadores };
 
   const metaNoBanco = await lerMeta(codigoSala);
-  if (!metaNoBanco || metaNoBanco.versao !== meta.versao) {
-    // Outra requisição já avançou o estado enquanto processávamos — o
-    // cálculo que fizemos ficou obsoleto. Usa o que está no banco agora.
-    return metaNoBanco ?? meta;
+  if (!metaNoBanco || metaNoBanco.versao !== metaInicial.versao) {
+    // Outra requisição já avançou o estado enquanto processávamos.
+    return { meta: metaNoBanco ?? metaInicial, jogadores: await listarJogadores(codigoSala) };
   }
 
   await salvarMeta(resultado.metaAtualizada);
   if (resultado.jogadoresMudaram) {
     await Promise.all(resultado.jogadoresAtualizados.map((j) => salvarJogador(codigoSala, j)));
   }
-  return resultado.metaAtualizada;
+  return { meta: resultado.metaAtualizada, jogadores: resultado.jogadoresAtualizados };
 }
 
 export async function GET(_request: Request, { params }: Contexto) {
   const codigoSala = params.codigo.toUpperCase();
-  let meta = await lerMeta(codigoSala);
-  if (!meta) return NextResponse.json({ erro: "Sala não encontrada." }, { status: 404 });
+  const metaInicial = await lerMeta(codigoSala);
+  if (!metaInicial) return NextResponse.json({ erro: "Sala não encontrada." }, { status: 404 });
 
-  meta = await sincronizar(codigoSala, meta);
-  const jogadores = await listarJogadores(codigoSala);
-
+  const { meta, jogadores } = await sincronizarEObterJogadores(codigoSala, metaInicial);
   return NextResponse.json(paraEstadoPublico(meta, jogadores));
 }
 
 export async function POST(request: Request, { params }: Contexto) {
   const codigoSala = params.codigo.toUpperCase();
-  let meta = await lerMeta(codigoSala);
-  if (!meta) return NextResponse.json({ ok: false, erro: "Sala não encontrada." }, { status: 404 });
-
-  meta = await sincronizar(codigoSala, meta);
+  const metaInicial = await lerMeta(codigoSala);
+  if (!metaInicial) return NextResponse.json({ ok: false, erro: "Sala não encontrada." }, { status: 404 });
 
   const corpo = await request.json();
   const acao = corpo.acao as string;
+
+  // A ação "responder" é, de longe, a mais frequente sob carga (todo mundo
+  // respondendo ao mesmo tempo) — evita o custo da sincronização completa
+  // nesse caminho, já que registrar a resposta não depende dela.
+  if (acao === "responder") {
+    const jaRespondeu = await lerResposta(codigoSala, metaInicial.indiceAtual, corpo.jogadorId);
+    if (!jaRespondeu) {
+      const resposta = registrarResposta(metaInicial, corpo.jogadorId, corpo.perguntaId, corpo.alternativaEscolhida ?? null);
+      if (resposta) await salvarResposta(codigoSala, resposta);
+    }
+    return NextResponse.json({ ok: true });
+  }
+
+  const { meta } = await sincronizarEObterJogadores(codigoSala, metaInicial);
 
   switch (acao) {
     case "entrar": {
@@ -132,15 +170,6 @@ export async function POST(request: Request, { params }: Contexto) {
         );
       }
       await salvarMeta(novaMeta);
-      break;
-    }
-
-    case "responder": {
-      const jaRespondeu = await lerResposta(codigoSala, meta.indiceAtual, corpo.jogadorId);
-      if (!jaRespondeu) {
-        const resposta = registrarResposta(meta, corpo.jogadorId, corpo.perguntaId, corpo.alternativaEscolhida ?? null);
-        if (resposta) await salvarResposta(codigoSala, resposta);
-      }
       break;
     }
 
