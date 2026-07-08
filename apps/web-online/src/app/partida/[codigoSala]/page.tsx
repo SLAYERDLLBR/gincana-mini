@@ -8,7 +8,7 @@ import { AnelTempo } from "@/components/ui/AnelTempo";
 import { buscarEstado, responder } from "@/lib/api-cliente";
 import type { EstadoPublico } from "@/lib/sala-logica";
 
-const INTERVALO_POLL_MS = 1000;
+const INTERVALO_POLL_MS = 1800;
 const CHAVE_DESTAQUES = "gincana:destaques";
 
 export default function PaginaPartida() {

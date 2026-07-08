@@ -29,7 +29,14 @@ interface Contexto {
 /** Avança o estado da sala (revelar gabarito / próxima pergunta / fim de
  * jogo) se for a hora — chamado em toda leitura e ação, com uma função pura
  * e idempotente por trás, então é seguro mesmo com várias requisições
- * concorrentes chegando aqui ao mesmo tempo. */
+ * concorrentes chegando aqui ao mesmo tempo.
+ *
+ * Proteção extra: como o cálculo (ler jogadores + respostas + decidir) pode
+ * levar um tempinho, uma requisição atrasada poderia gravar um resultado
+ * obsoleto por cima de um estado mais novo (o jogo "voltando no tempo").
+ * Por isso, logo antes de gravar, relemos a meta e comparamos a "versão" —
+ * se alguém mais já avançou nesse meio-tempo, descartamos nosso cálculo em
+ * vez de sobrescrever. */
 async function sincronizar(codigoSala: string, meta: SalaMeta): Promise<SalaMeta> {
   if (meta.status !== "EM_ANDAMENTO") return meta;
 
@@ -37,6 +44,13 @@ async function sincronizar(codigoSala: string, meta: SalaMeta): Promise<SalaMeta
   const respostas = meta.indiceAtual >= 0 ? await listarRespostasDaQuestao(codigoSala, meta.indiceAtual) : [];
   const resultado = avaliarTransicao(meta, jogadores, respostas);
   if (!resultado) return meta;
+
+  const metaNoBanco = await lerMeta(codigoSala);
+  if (!metaNoBanco || metaNoBanco.versao !== meta.versao) {
+    // Outra requisição já avançou o estado enquanto processávamos — o
+    // cálculo que fizemos ficou obsoleto. Usa o que está no banco agora.
+    return metaNoBanco ?? meta;
+  }
 
   await salvarMeta(resultado.metaAtualizada);
   if (resultado.jogadoresMudaram) {

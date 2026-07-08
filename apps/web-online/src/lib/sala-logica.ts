@@ -92,6 +92,10 @@ export interface SalaMeta {
   destaquesFinais: DestaquesFinais | null;
   criadaEm: number;
   atualizadoEm: number;
+  /** Contador incrementado a cada gravação — usado para detectar se alguém
+   * mais já avançou o estado da sala enquanto esta requisição processava,
+   * evitando que uma escrita atrasada "volte no tempo" o jogo. */
+  versao: number;
 }
 
 export function gerarCodigoSala(): string {
@@ -116,6 +120,7 @@ export function criarSalaMetaInicial(codigoSala: string, organizadorId: string):
     destaquesFinais: null,
     criadaEm: agora,
     atualizadoEm: agora,
+    versao: 0,
   };
 }
 
@@ -244,6 +249,7 @@ export function prepararInicioPartida(meta: SalaMeta, jogadores: JogadorPerfil[]
     alternativasRodadaAtual: alternativas,
     indiceCorretoRodadaAtual: indiceCorreto,
     revelacaoAtual: null,
+    versao: meta.versao + 1,
   };
 }
 
@@ -363,6 +369,7 @@ export function avaliarTransicao(
           placarVermelho: somarPlacar(jogadoresAtualizados, "VERMELHO"),
           revelarEm: agora,
         },
+        versao: meta.versao + 1,
       },
       jogadoresAtualizados,
       jogadoresMudaram: true,
@@ -380,6 +387,7 @@ export function avaliarTransicao(
           status: "FINALIZADA",
           revelacaoAtual: null,
           destaquesFinais: calcularDestaquesFinais(jogadores),
+          versao: meta.versao + 1,
         },
         jogadoresAtualizados: jogadores,
         jogadoresMudaram: false,
@@ -398,6 +406,7 @@ export function avaliarTransicao(
         alternativasRodadaAtual: alternativas,
         indiceCorretoRodadaAtual: indiceCorreto,
         revelacaoAtual: null,
+        versao: meta.versao + 1,
       },
       jogadoresAtualizados: jogadores,
       jogadoresMudaram: false,
