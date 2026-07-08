@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background-color: #12163b;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(139, 92, 246, 0.25), transparent),
+    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(47, 111, 237, 0.18), transparent);
+  color: #f5f3ed;
+  min-height: 100dvh;
+}
+
+/* Foco de teclado visível em todos os elementos interativos */
+:focus-visible {
+  outline: 3px solid #ffc53d;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

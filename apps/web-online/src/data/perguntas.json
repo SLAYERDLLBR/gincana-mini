@@ -1,0 +1,1082 @@
+[
+  {
+    "id": "1",
+    "enunciado": "Qual é o nome do nosso país?",
+    "alternativas": [
+      "Brasil",
+      "Argentina",
+      "Portugal",
+      "Chile"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Nós vivemos no Brasil, um país da América do Sul.",
+    "categoria": "HISTORIA",
+    "dificuldade": "FACIL",
+    "idade": 6
+  },
+  {
+    "id": "2",
+    "enunciado": "Quem morava no Brasil antes da chegada dos portugueses?",
+    "alternativas": [
+      "Os indígenas",
+      "Os romanos",
+      "Os vikings",
+      "Os chineses"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Os povos indígenas já viviam aqui muito antes dos portugueses chegarem.",
+    "categoria": "HISTORIA",
+    "dificuldade": "MEDIA",
+    "idade": 6
+  },
+  {
+    "id": "3",
+    "enunciado": "Os portugueses chegaram ao Brasil viajando de quê?",
+    "alternativas": [
+      "Navio",
+      "Avião",
+      "Trem",
+      "Carro"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Naquela época não existiam aviões — as viagens longas eram feitas de navio.",
+    "categoria": "HISTORIA",
+    "dificuldade": "DIFICIL",
+    "idade": 6
+  },
+  {
+    "id": "4",
+    "enunciado": "Qual é a capital do Brasil?",
+    "alternativas": [
+      "Brasília",
+      "Rio de Janeiro",
+      "São Paulo",
+      "Salvador"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Brasília é a capital do Brasil desde 1960.",
+    "categoria": "HISTORIA",
+    "dificuldade": "FACIL",
+    "idade": 7
+  },
+  {
+    "id": "5",
+    "enunciado": "Em que ano o Brasil foi encontrado pelos portugueses?",
+    "alternativas": [
+      "1500",
+      "1822",
+      "1900",
+      "1600"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Pedro Álvares Cabral chegou ao Brasil em 1500.",
+    "categoria": "HISTORIA",
+    "dificuldade": "MEDIA",
+    "idade": 7
+  },
+  {
+    "id": "6",
+    "enunciado": "Quem comandou a expedição portuguesa que chegou ao Brasil em 1500?",
+    "alternativas": [
+      "Pedro Álvares Cabral",
+      "Cristóvão Colombo",
+      "Vasco da Gama",
+      "Dom Pedro I"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Pedro Álvares Cabral liderou a frota que chegou ao litoral da Bahia.",
+    "categoria": "HISTORIA",
+    "dificuldade": "DIFICIL",
+    "idade": 7
+  },
+  {
+    "id": "7",
+    "enunciado": "Qual é o dia em que comemoramos a independência do Brasil?",
+    "alternativas": [
+      "7 de setembro",
+      "25 de dezembro",
+      "21 de abril",
+      "1º de maio"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O Brasil se tornou independente de Portugal em 7 de setembro de 1822.",
+    "categoria": "HISTORIA",
+    "dificuldade": "FACIL",
+    "idade": 8
+  },
+  {
+    "id": "8",
+    "enunciado": "Quem proclamou a independência do Brasil?",
+    "alternativas": [
+      "Dom Pedro I",
+      "Dom Pedro II",
+      "Tiradentes",
+      "Getúlio Vargas"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Dom Pedro I proclamou a independência às margens do rio Ipiranga, em 1822.",
+    "categoria": "HISTORIA",
+    "dificuldade": "MEDIA",
+    "idade": 8
+  },
+  {
+    "id": "9",
+    "enunciado": "Como ficou conhecido o grito de independência de Dom Pedro I?",
+    "alternativas": [
+      "Grito do Ipiranga",
+      "Grito da Liberdade",
+      "Grito de Tiradentes",
+      "Grito da República"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O episódio ficou famoso como Grito do Ipiranga.",
+    "categoria": "HISTORIA",
+    "dificuldade": "DIFICIL",
+    "idade": 8
+  },
+  {
+    "id": "10",
+    "enunciado": "Quem foi Tiradentes?",
+    "alternativas": [
+      "Um herói que lutou pela independência",
+      "Um jogador de futebol",
+      "Um cantor famoso",
+      "Um presidente do Brasil"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Tiradentes participou da Inconfidência Mineira, um movimento que queria a independência do Brasil.",
+    "categoria": "HISTORIA",
+    "dificuldade": "FACIL",
+    "idade": 9
+  },
+  {
+    "id": "11",
+    "enunciado": "O que foi a Inconfidência Mineira?",
+    "alternativas": [
+      "Um movimento que queria a independência do Brasil",
+      "Uma guerra contra a Argentina",
+      "Uma festa popular",
+      "Uma lei sobre impostos"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Foi um movimento em Minas Gerais, no século 18, contra o domínio português.",
+    "categoria": "HISTORIA",
+    "dificuldade": "MEDIA",
+    "idade": 9
+  },
+  {
+    "id": "12",
+    "enunciado": "Em que século aconteceu a Inconfidência Mineira?",
+    "alternativas": [
+      "Século 18",
+      "Século 20",
+      "Século 16",
+      "Século 21"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "A Inconfidência Mineira aconteceu em 1789, no século 18.",
+    "categoria": "HISTORIA",
+    "dificuldade": "DIFICIL",
+    "idade": 9
+  },
+  {
+    "id": "13",
+    "enunciado": "Como se chamava o regime político do Brasil antes de virar república?",
+    "alternativas": [
+      "Monarquia",
+      "Ditadura",
+      "Democracia direta",
+      "Colônia inglesa"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Antes de 1889, o Brasil era uma monarquia, governada por um imperador.",
+    "categoria": "HISTORIA",
+    "dificuldade": "FACIL",
+    "idade": 10
+  },
+  {
+    "id": "14",
+    "enunciado": "Em que ano o Brasil se tornou uma república?",
+    "alternativas": [
+      "1889",
+      "1822",
+      "1500",
+      "1985"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "A Proclamação da República aconteceu em 15 de novembro de 1889.",
+    "categoria": "HISTORIA",
+    "dificuldade": "MEDIA",
+    "idade": 10
+  },
+  {
+    "id": "15",
+    "enunciado": "Quem foi o marechal que liderou a Proclamação da República?",
+    "alternativas": [
+      "Deodoro da Fonseca",
+      "Dom Pedro II",
+      "Getúlio Vargas",
+      "Duque de Caxias"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Marechal Deodoro da Fonseca liderou o movimento que proclamou a República.",
+    "categoria": "HISTORIA",
+    "dificuldade": "DIFICIL",
+    "idade": 10
+  },
+  {
+    "id": "16",
+    "enunciado": "Quantos anos durou o período conhecido como Brasil Colônia?",
+    "alternativas": [
+      "Cerca de 300 anos",
+      "Cerca de 30 anos",
+      "Cerca de 3 anos",
+      "Cerca de 3.000 anos"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O Brasil foi colônia de Portugal de 1500 até 1822, cerca de 300 anos.",
+    "categoria": "HISTORIA",
+    "dificuldade": "FACIL",
+    "idade": 11
+  },
+  {
+    "id": "17",
+    "enunciado": "O que foi abolido pela Lei Áurea, em 1888?",
+    "alternativas": [
+      "A escravidão",
+      "O voto",
+      "O imposto de renda",
+      "O serviço militar"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "A Lei Áurea, assinada pela Princesa Isabel, aboliu a escravidão no Brasil.",
+    "categoria": "HISTORIA",
+    "dificuldade": "MEDIA",
+    "idade": 11
+  },
+  {
+    "id": "18",
+    "enunciado": "Quem assinou a Lei Áurea?",
+    "alternativas": [
+      "Princesa Isabel",
+      "Dom Pedro I",
+      "Getúlio Vargas",
+      "Tiradentes"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "A Princesa Isabel assinou a Lei Áurea em 13 de maio de 1888.",
+    "categoria": "HISTORIA",
+    "dificuldade": "DIFICIL",
+    "idade": 11
+  },
+  {
+    "id": "19",
+    "enunciado": "Qual destas é uma vogal?",
+    "alternativas": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "As vogais são as letras A, E, I, O, U.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "FACIL",
+    "idade": 6
+  },
+  {
+    "id": "20",
+    "enunciado": "Quantas letras tem a palavra GATO?",
+    "alternativas": [
+      "4",
+      "3",
+      "5",
+      "6"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "G-A-T-O tem 4 letras.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "MEDIA",
+    "idade": 6
+  },
+  {
+    "id": "21",
+    "enunciado": "Qual destas palavras rima com PATO?",
+    "alternativas": [
+      "Sapato",
+      "Janela",
+      "Cadeira",
+      "Computador"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Pato e sapato terminam com o mesmo som.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "DIFICIL",
+    "idade": 6
+  },
+  {
+    "id": "22",
+    "enunciado": "Qual é o antônimo (contrário) de grande?",
+    "alternativas": [
+      "Pequeno",
+      "Bonito",
+      "Rápido",
+      "Alto"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O contrário de grande é pequeno.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "FACIL",
+    "idade": 7
+  },
+  {
+    "id": "23",
+    "enunciado": "Qual é o sinônimo de feliz?",
+    "alternativas": [
+      "Alegre",
+      "Triste",
+      "Cansado",
+      "Bravo"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Alegre tem o mesmo sentido que feliz.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "MEDIA",
+    "idade": 7
+  },
+  {
+    "id": "24",
+    "enunciado": "Qual palavra está no plural?",
+    "alternativas": [
+      "Bolas",
+      "Bola",
+      "Bolinha",
+      "Bolão"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Bolas indica mais de uma bola — está no plural.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "DIFICIL",
+    "idade": 7
+  },
+  {
+    "id": "25",
+    "enunciado": "Complete: o menino ___ na escola. (brincar, no passado)",
+    "alternativas": [
+      "brincou",
+      "brinca",
+      "brincará",
+      "brincando"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Brincou indica algo que já aconteceu, no passado.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "FACIL",
+    "idade": 8
+  },
+  {
+    "id": "26",
+    "enunciado": "Qual destas frases está no plural?",
+    "alternativas": [
+      "Os cachorros correm no parque.",
+      "O cachorro corre no parque.",
+      "A menina corre.",
+      "O menino brinca."
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Os cachorros indica mais de um cachorro — está no plural.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "MEDIA",
+    "idade": 8
+  },
+  {
+    "id": "27",
+    "enunciado": "Qual é a classe gramatical da palavra rapidamente?",
+    "alternativas": [
+      "Advérbio",
+      "Substantivo",
+      "Verbo",
+      "Artigo"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Rapidamente indica o modo como algo acontece — é um advérbio.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "DIFICIL",
+    "idade": 8
+  },
+  {
+    "id": "28",
+    "enunciado": "Qual destas palavras é um substantivo?",
+    "alternativas": [
+      "Casa",
+      "Correr",
+      "Bonito",
+      "Rapidamente"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Casa nomeia um lugar — é um substantivo.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "FACIL",
+    "idade": 9
+  },
+  {
+    "id": "29",
+    "enunciado": "Qual é o plural de papel?",
+    "alternativas": [
+      "Papéis",
+      "Papels",
+      "Papeles",
+      "Papelzinhos"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Palavras terminadas em -al geralmente fazem plural em -ais: papel vira papéis.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "MEDIA",
+    "idade": 9
+  },
+  {
+    "id": "30",
+    "enunciado": "Na frase Maria comprou um livro interessante, qual palavra é o adjetivo?",
+    "alternativas": [
+      "Interessante",
+      "Maria",
+      "Comprou",
+      "Livro"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Interessante descreve uma característica do livro — é um adjetivo.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "DIFICIL",
+    "idade": 9
+  },
+  {
+    "id": "31",
+    "enunciado": "Qual destas é uma conjunção (liga duas ideias)?",
+    "alternativas": [
+      "E",
+      "Casa",
+      "Correr",
+      "Bonito"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "E liga palavras ou frases — é uma conjunção.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "FACIL",
+    "idade": 10
+  },
+  {
+    "id": "32",
+    "enunciado": "Qual é o feminino de professor?",
+    "alternativas": [
+      "Professora",
+      "Professoro",
+      "Professoria",
+      "Professorina"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O feminino de professor é professora.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "MEDIA",
+    "idade": 10
+  },
+  {
+    "id": "33",
+    "enunciado": "Na frase Ele correu rapidamente até a escola, qual é o sujeito?",
+    "alternativas": [
+      "Ele",
+      "Rapidamente",
+      "Escola",
+      "Correu"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Ele é quem pratica a ação de correr — é o sujeito da frase.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "DIFICIL",
+    "idade": 10
+  },
+  {
+    "id": "34",
+    "enunciado": "Qual destas palavras é um verbo no infinitivo?",
+    "alternativas": [
+      "Correr",
+      "Corredor",
+      "Corrida",
+      "Correção"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Correr indica uma ação — é um verbo no infinitivo.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "FACIL",
+    "idade": 11
+  },
+  {
+    "id": "35",
+    "enunciado": "Qual é o sinônimo de veloz?",
+    "alternativas": [
+      "Rápido",
+      "Lento",
+      "Pesado",
+      "Fraco"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Veloz e rápido significam a mesma coisa.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "MEDIA",
+    "idade": 11
+  },
+  {
+    "id": "36",
+    "enunciado": "Na frase O livro foi lido pelo aluno, a frase está em qual voz verbal?",
+    "alternativas": [
+      "Voz passiva",
+      "Voz ativa",
+      "Voz reflexiva",
+      "Voz imperativa"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Quando o sujeito recebe a ação (o livro foi lido), a frase está na voz passiva.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "DIFICIL",
+    "idade": 11
+  },
+  {
+    "id": "37",
+    "enunciado": "Qual sinal usamos no final de uma pergunta?",
+    "alternativas": [
+      "?",
+      ".",
+      "!",
+      ","
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O ponto de interrogação (?) é usado no final de perguntas.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "FACIL",
+    "idade": 6
+  },
+  {
+    "id": "38",
+    "enunciado": "Qual destas palavras começa com letra maiúscula corretamente?",
+    "alternativas": [
+      "Maria",
+      "maria",
+      "MARIA",
+      "mAria"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Nomes próprios, como Maria, começam com letra maiúscula.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "MEDIA",
+    "idade": 6
+  },
+  {
+    "id": "39",
+    "enunciado": "Quantas sílabas tem a palavra BOLA?",
+    "alternativas": [
+      "2",
+      "1",
+      "3",
+      "4"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "BO-LA tem duas sílabas.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "DIFICIL",
+    "idade": 6
+  },
+  {
+    "id": "40",
+    "enunciado": "Qual sinal usamos no final de uma frase de exclamação (surpresa)?",
+    "alternativas": [
+      "!",
+      "?",
+      ".",
+      ";"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O ponto de exclamação (!) mostra surpresa ou emoção.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "FACIL",
+    "idade": 7
+  },
+  {
+    "id": "41",
+    "enunciado": "Quantas sílabas tem a palavra CACHORRO?",
+    "alternativas": [
+      "3",
+      "2",
+      "4",
+      "5"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "CA-CHOR-RO tem três sílabas.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "MEDIA",
+    "idade": 7
+  },
+  {
+    "id": "42",
+    "enunciado": "Qual destas palavras tem acento (sinal gráfico)?",
+    "alternativas": [
+      "Café",
+      "Bola",
+      "Casa",
+      "Sapo"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Café tem um acento agudo na letra E.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "DIFICIL",
+    "idade": 7
+  },
+  {
+    "id": "43",
+    "enunciado": "Qual é o plural correto de flor?",
+    "alternativas": [
+      "Flores",
+      "Floris",
+      "Florzinhas",
+      "Flors"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O plural de flor é flores.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "FACIL",
+    "idade": 8
+  },
+  {
+    "id": "44",
+    "enunciado": "Qual destas frases está com a concordância correta?",
+    "alternativas": [
+      "Os meninos brincam.",
+      "Os menino brinca.",
+      "O meninos brincam.",
+      "Os meninos brinca."
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Em Os meninos brincam, o verbo concorda em número (plural) com o sujeito.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "MEDIA",
+    "idade": 8
+  },
+  {
+    "id": "45",
+    "enunciado": "Qual palavra é um pronome?",
+    "alternativas": [
+      "Ele",
+      "Casa",
+      "Bonito",
+      "Correr"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Ele substitui um nome (substantivo) — é um pronome.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "DIFICIL",
+    "idade": 8
+  },
+  {
+    "id": "46",
+    "enunciado": "Onde usamos vírgula em uma lista de itens, como em Comprei maçã, banana e uva?",
+    "alternativas": [
+      "Entre os itens da lista",
+      "No final da frase",
+      "Antes de cada verbo",
+      "No meio das palavras"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "A vírgula separa os itens de uma lista, exceto antes do e final.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "FACIL",
+    "idade": 9
+  },
+  {
+    "id": "47",
+    "enunciado": "Qual palavra está escrita corretamente?",
+    "alternativas": [
+      "Exceção",
+      "Eceção",
+      "Esceção",
+      "Exeção"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "A grafia correta é exceção, com X e ç.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "MEDIA",
+    "idade": 9
+  },
+  {
+    "id": "48",
+    "enunciado": "Na frase Ana e Pedro foram ao parque, qual é o sujeito?",
+    "alternativas": [
+      "Ana e Pedro",
+      "Foram",
+      "Parque",
+      "Ao"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Ana e Pedro são quem praticou a ação — é o sujeito composto da frase.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "DIFICIL",
+    "idade": 9
+  },
+  {
+    "id": "49",
+    "enunciado": "Qual destas palavras é um verbo no infinitivo?",
+    "alternativas": [
+      "Cantar",
+      "Cantando",
+      "Cantou",
+      "Cantei"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Verbos no infinitivo terminam em -ar, -er ou -ir: cantar.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "FACIL",
+    "idade": 10
+  },
+  {
+    "id": "50",
+    "enunciado": "Qual é a forma correta: Faz dois anos ou Fazem dois anos?",
+    "alternativas": [
+      "Faz dois anos",
+      "Fazem dois anos",
+      "Fazerá dois anos",
+      "Fazendo dois anos"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Quando fazer indica tempo, ele fica no singular: faz dois anos.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "MEDIA",
+    "idade": 10
+  },
+  {
+    "id": "51",
+    "enunciado": "Qual destas palavras é acentuada por ser proparoxítona?",
+    "alternativas": [
+      "Médico",
+      "Cadeira",
+      "Café",
+      "Jardim"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Médico é proparoxítona (sílaba tônica antes da penúltima) e por isso sempre é acentuada.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "DIFICIL",
+    "idade": 10
+  },
+  {
+    "id": "52",
+    "enunciado": "Qual é o plural de cidadão?",
+    "alternativas": [
+      "Cidadãos",
+      "Cidadães",
+      "Cidadões",
+      "Cidadãoes"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O plural de cidadão é cidadãos.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "FACIL",
+    "idade": 11
+  },
+  {
+    "id": "53",
+    "enunciado": "Complete corretamente: Ele ___ à escola todos os dias.",
+    "alternativas": [
+      "vai",
+      "vou",
+      "vamos",
+      "vão"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Com ele (3ª pessoa do singular), o verbo ir fica vai.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "MEDIA",
+    "idade": 11
+  },
+  {
+    "id": "54",
+    "enunciado": "Qual destas frases usa a crase corretamente?",
+    "alternativas": [
+      "Fomos à praia.",
+      "Fomos a praia às.",
+      "Fomos à o cinema.",
+      "Fomos à ele."
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Usa-se crase antes de palavras femininas: à praia (a + a).",
+    "categoria": "GRAMATICA",
+    "dificuldade": "DIFICIL",
+    "idade": 11
+  },
+  {
+    "id": "55",
+    "enunciado": "Quanto é 2 + 2?",
+    "alternativas": [
+      "4",
+      "3",
+      "5",
+      "6"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "2 + 2 = 4.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "FACIL",
+    "idade": 6
+  },
+  {
+    "id": "56",
+    "enunciado": "Qual número vem depois do 9?",
+    "alternativas": [
+      "10",
+      "8",
+      "11",
+      "12"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Depois do 9 vem o 10.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "MEDIA",
+    "idade": 6
+  },
+  {
+    "id": "57",
+    "enunciado": "Se eu tenho 3 maçãs e ganho mais 2, quantas maçãs eu tenho?",
+    "alternativas": [
+      "5",
+      "4",
+      "6",
+      "3"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "3 + 2 = 5 maçãs.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "DIFICIL",
+    "idade": 6
+  },
+  {
+    "id": "58",
+    "enunciado": "Quanto é 5 + 3?",
+    "alternativas": [
+      "8",
+      "7",
+      "9",
+      "6"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "5 + 3 = 8.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "FACIL",
+    "idade": 7
+  },
+  {
+    "id": "59",
+    "enunciado": "Qual é o número que vem antes do 15?",
+    "alternativas": [
+      "14",
+      "16",
+      "13",
+      "15"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Antes do 15 vem o 14.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "MEDIA",
+    "idade": 7
+  },
+  {
+    "id": "60",
+    "enunciado": "Ana tinha 10 figurinhas e deu 4 para o irmão. Com quantas ela ficou?",
+    "alternativas": [
+      "6",
+      "4",
+      "10",
+      "14"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "10 - 4 = 6 figurinhas.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "DIFICIL",
+    "idade": 7
+  },
+  {
+    "id": "61",
+    "enunciado": "Quanto é 7 x 2?",
+    "alternativas": [
+      "14",
+      "12",
+      "16",
+      "9"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "7 x 2 = 14.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "FACIL",
+    "idade": 8
+  },
+  {
+    "id": "62",
+    "enunciado": "Qual figura não pertence ao grupo: quadrado, triângulo, círculo, cachorro?",
+    "alternativas": [
+      "Cachorro",
+      "Quadrado",
+      "Triângulo",
+      "Círculo"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "As outras três são formas geométricas; cachorro é um animal.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "MEDIA",
+    "idade": 8
+  },
+  {
+    "id": "63",
+    "enunciado": "Se hoje é terça-feira, que dia será depois de amanhã?",
+    "alternativas": [
+      "Quinta-feira",
+      "Quarta-feira",
+      "Sexta-feira",
+      "Segunda-feira"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Depois de amanhã, a partir de terça, é quinta-feira.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "DIFICIL",
+    "idade": 8
+  },
+  {
+    "id": "64",
+    "enunciado": "Quanto é 9 x 3?",
+    "alternativas": [
+      "27",
+      "24",
+      "18",
+      "30"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "9 x 3 = 27.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "FACIL",
+    "idade": 9
+  },
+  {
+    "id": "65",
+    "enunciado": "Qual é a metade de 48?",
+    "alternativas": [
+      "24",
+      "20",
+      "26",
+      "22"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "48 dividido por 2 é 24.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "MEDIA",
+    "idade": 9
+  },
+  {
+    "id": "66",
+    "enunciado": "Uma sequência é 2, 4, 6, 8, ___. Qual é o próximo número?",
+    "alternativas": [
+      "10",
+      "9",
+      "12",
+      "11"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "É a sequência dos números pares: depois do 8 vem o 10.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "DIFICIL",
+    "idade": 9
+  },
+  {
+    "id": "67",
+    "enunciado": "Quanto é 12 x 4?",
+    "alternativas": [
+      "48",
+      "44",
+      "52",
+      "36"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "12 x 4 = 48.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "FACIL",
+    "idade": 10
+  },
+  {
+    "id": "68",
+    "enunciado": "Se um lápis custa R$ 2 e eu comprei 5, quanto gastei no total?",
+    "alternativas": [
+      "R$ 10",
+      "R$ 7",
+      "R$ 12",
+      "R$ 8"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "5 x 2 = 10 reais.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "MEDIA",
+    "idade": 10
+  },
+  {
+    "id": "69",
+    "enunciado": "Qual número está faltando: 3, 6, 12, 24, ___?",
+    "alternativas": [
+      "48",
+      "36",
+      "30",
+      "42"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Cada número é o dobro do anterior: 24 x 2 = 48.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "DIFICIL",
+    "idade": 10
+  },
+  {
+    "id": "70",
+    "enunciado": "Quanto é 100 dividido por 4?",
+    "alternativas": [
+      "25",
+      "20",
+      "30",
+      "24"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "100 ÷ 4 = 25.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "FACIL",
+    "idade": 11
+  },
+  {
+    "id": "71",
+    "enunciado": "Um trem sai às 14h e chega às 17h. Quanto tempo durou a viagem?",
+    "alternativas": [
+      "3 horas",
+      "2 horas",
+      "4 horas",
+      "5 horas"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "De 14h às 17h se passaram 3 horas.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "MEDIA",
+    "idade": 11
+  },
+  {
+    "id": "72",
+    "enunciado": "Pedro tem o dobro da idade de sua irmã. Se a irmã tem 6 anos, quantos anos tem Pedro?",
+    "alternativas": [
+      "12",
+      "10",
+      "8",
+      "14"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O dobro de 6 é 12.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "DIFICIL",
+    "idade": 11
+  }
+]

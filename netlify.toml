@@ -1,0 +1,12 @@
+[build]
+  command = "npm install && npm run build"
+  publish = "apps/web-online/.next"
+  functions = "apps/web-online/.netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
