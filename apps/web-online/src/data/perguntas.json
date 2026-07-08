@@ -1078,5 +1078,1355 @@
     "categoria": "RACIOCINIO_LOGICO",
     "dificuldade": "DIFICIL",
     "idade": 11
+  },
+  {
+    "id": "73",
+    "enunciado": "Que tipo de casa muitos povos indígenas construíam?",
+    "alternativas": [
+      "Oca",
+      "Apartamento",
+      "Castelo",
+      "Iglu"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Muitos povos indígenas do Brasil moravam em ocas, feitas de madeira e palha.",
+    "categoria": "HISTORIA",
+    "dificuldade": "FACIL",
+    "idade": 6
+  },
+  {
+    "id": "74",
+    "enunciado": "Em qual continente fica o Brasil?",
+    "alternativas": [
+      "América do Sul",
+      "Europa",
+      "África",
+      "Ásia"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O Brasil está localizado no continente da América do Sul.",
+    "categoria": "HISTORIA",
+    "dificuldade": "FACIL",
+    "idade": 6
+  },
+  {
+    "id": "75",
+    "enunciado": "Como as crianças indígenas aprendiam sobre a natureza antigamente?",
+    "alternativas": [
+      "Com os mais velhos da tribo",
+      "Em escolas grandes",
+      "Pela internet",
+      "Em livros digitais"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Os povos indígenas passavam conhecimento de geração em geração, com os mais velhos ensinando os mais novos.",
+    "categoria": "HISTORIA",
+    "dificuldade": "MEDIA",
+    "idade": 6
+  },
+  {
+    "id": "76",
+    "enunciado": "Qual era um meio de transporte muito usado pelos indígenas nos rios?",
+    "alternativas": [
+      "Canoa",
+      "Avião",
+      "Trem",
+      "Carro"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "As canoas, feitas de troncos de árvore, eram muito usadas para navegar pelos rios.",
+    "categoria": "HISTORIA",
+    "dificuldade": "DIFICIL",
+    "idade": 6
+  },
+  {
+    "id": "77",
+    "enunciado": "Quantas vogais existem no alfabeto?",
+    "alternativas": [
+      "5",
+      "3",
+      "7",
+      "10"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "As vogais são A, E, I, O, U — um total de 5.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "FACIL",
+    "idade": 6
+  },
+  {
+    "id": "78",
+    "enunciado": "Qual destas palavras começa com a letra B?",
+    "alternativas": [
+      "Bola",
+      "Gato",
+      "Sapo",
+      "Rato"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Bola começa com a letra B.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "FACIL",
+    "idade": 6
+  },
+  {
+    "id": "79",
+    "enunciado": "Quantas sílabas tem a palavra SAPATO?",
+    "alternativas": [
+      "3",
+      "2",
+      "4",
+      "1"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "SA-PA-TO tem três sílabas.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "MEDIA",
+    "idade": 6
+  },
+  {
+    "id": "80",
+    "enunciado": "Qual destas palavras tem o mesmo som final que SOL?",
+    "alternativas": [
+      "Anzol",
+      "Mesa",
+      "Pipa",
+      "Fada"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Sol e anzol terminam com o mesmo som.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "DIFICIL",
+    "idade": 6
+  },
+  {
+    "id": "81",
+    "enunciado": "Qual destas é uma letra maiúscula?",
+    "alternativas": [
+      "A",
+      "a",
+      "b",
+      "c"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "A letra A, escrita grande, é maiúscula.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "FACIL",
+    "idade": 6
+  },
+  {
+    "id": "82",
+    "enunciado": "No final de uma frase normal, qual sinal usamos?",
+    "alternativas": [
+      "Ponto final (.)",
+      "Ponto de interrogação (?)",
+      "Vírgula (,)",
+      "Dois pontos (:)"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O ponto final marca o fim de uma frase.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "FACIL",
+    "idade": 6
+  },
+  {
+    "id": "83",
+    "enunciado": "Qual destas palavras está escrita corretamente?",
+    "alternativas": [
+      "Cachorro",
+      "Cachoro",
+      "Kachorro",
+      "Cachorru"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "A forma correta é cachorro, com dois erres.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "MEDIA",
+    "idade": 6
+  },
+  {
+    "id": "84",
+    "enunciado": "Quantas letras tem o alfabeto português?",
+    "alternativas": [
+      "26",
+      "20",
+      "30",
+      "24"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O alfabeto português tem 26 letras.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "DIFICIL",
+    "idade": 6
+  },
+  {
+    "id": "85",
+    "enunciado": "Quanto é 4 + 1?",
+    "alternativas": [
+      "5",
+      "4",
+      "6",
+      "3"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "4 + 1 = 5.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "FACIL",
+    "idade": 6
+  },
+  {
+    "id": "86",
+    "enunciado": "Qual número é maior: 7 ou 5?",
+    "alternativas": [
+      "7",
+      "5",
+      "São iguais",
+      "Nenhum"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "7 é maior que 5.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "MEDIA",
+    "idade": 6
+  },
+  {
+    "id": "87",
+    "enunciado": "Se eu tenho 2 balas e ganho mais 3, quantas balas eu tenho?",
+    "alternativas": [
+      "5",
+      "4",
+      "6",
+      "3"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "2 + 3 = 5 balas.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "DIFICIL",
+    "idade": 6
+  },
+  {
+    "id": "88",
+    "enunciado": "Qual é o nome da nossa capital federal?",
+    "alternativas": [
+      "Brasília",
+      "Rio de Janeiro",
+      "São Paulo",
+      "Salvador"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Brasília é a capital do Brasil.",
+    "categoria": "HISTORIA",
+    "dificuldade": "FACIL",
+    "idade": 7
+  },
+  {
+    "id": "89",
+    "enunciado": "Que povo já vivia no Brasil muito antes dos portugueses chegarem?",
+    "alternativas": [
+      "Os povos indígenas",
+      "Os romanos",
+      "Os egípcios",
+      "Os vikings"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Os povos indígenas viviam no Brasil há milhares de anos antes da chegada dos portugueses.",
+    "categoria": "HISTORIA",
+    "dificuldade": "FACIL",
+    "idade": 7
+  },
+  {
+    "id": "90",
+    "enunciado": "De qual país vieram os primeiros colonizadores do Brasil?",
+    "alternativas": [
+      "Portugal",
+      "Espanha",
+      "França",
+      "Itália"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Portugal foi o país que colonizou o Brasil a partir de 1500.",
+    "categoria": "HISTORIA",
+    "dificuldade": "MEDIA",
+    "idade": 7
+  },
+  {
+    "id": "91",
+    "enunciado": "Qual é o nome do navegador português que chegou ao Brasil em 1500?",
+    "alternativas": [
+      "Pedro Álvares Cabral",
+      "Cristóvão Colombo",
+      "Vasco da Gama",
+      "Fernão de Magalhães"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Pedro Álvares Cabral chegou ao Brasil em 1500.",
+    "categoria": "HISTORIA",
+    "dificuldade": "DIFICIL",
+    "idade": 7
+  },
+  {
+    "id": "92",
+    "enunciado": "Qual é o plural de casa?",
+    "alternativas": [
+      "Casas",
+      "Casa",
+      "Caseira",
+      "Casarão"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O plural de casa é casas.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "FACIL",
+    "idade": 7
+  },
+  {
+    "id": "93",
+    "enunciado": "Qual destas palavras é o oposto de quente?",
+    "alternativas": [
+      "Frio",
+      "Morno",
+      "Fervendo",
+      "Ardente"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O oposto de quente é frio.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "FACIL",
+    "idade": 7
+  },
+  {
+    "id": "94",
+    "enunciado": "Qual é o diminutivo de cachorro?",
+    "alternativas": [
+      "Cachorrinho",
+      "Cachorrão",
+      "Cachorrada",
+      "Cachorral"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O diminutivo de cachorro é cachorrinho.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "MEDIA",
+    "idade": 7
+  },
+  {
+    "id": "95",
+    "enunciado": "Qual destas frases faz sentido?",
+    "alternativas": [
+      "O menino brincou no parque.",
+      "O parque brincou no menino.",
+      "No brincou parque menino o.",
+      "Brincou o no menino parque."
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Só a primeira frase segue a ordem correta das palavras.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "DIFICIL",
+    "idade": 7
+  },
+  {
+    "id": "96",
+    "enunciado": "Qual destas palavras é um nome de pessoa (nome próprio)?",
+    "alternativas": [
+      "Maria",
+      "casa",
+      "correr",
+      "bonito"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Maria é um nome próprio de pessoa, por isso começa com letra maiúscula.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "FACIL",
+    "idade": 7
+  },
+  {
+    "id": "97",
+    "enunciado": "Complete: Eu ___ uma maçã. (comer, no presente)",
+    "alternativas": [
+      "como",
+      "comi",
+      "comerei",
+      "comendo"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Na frase Eu como uma maçã, o verbo comer está no presente.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "FACIL",
+    "idade": 7
+  },
+  {
+    "id": "98",
+    "enunciado": "Qual destas palavras nomeia um objeto (é um substantivo)?",
+    "alternativas": [
+      "Mochila",
+      "Correr",
+      "Feliz",
+      "Rapidamente"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Mochila nomeia um objeto — é um substantivo.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "MEDIA",
+    "idade": 7
+  },
+  {
+    "id": "99",
+    "enunciado": "Qual é o plural de animal?",
+    "alternativas": [
+      "Animais",
+      "Animals",
+      "Animales",
+      "Animalzinhos"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O plural de animal é animais.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "DIFICIL",
+    "idade": 7
+  },
+  {
+    "id": "100",
+    "enunciado": "Quanto é 6 + 4?",
+    "alternativas": [
+      "10",
+      "9",
+      "11",
+      "8"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "6 + 4 = 10.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "FACIL",
+    "idade": 7
+  },
+  {
+    "id": "101",
+    "enunciado": "Quantos dias tem uma semana?",
+    "alternativas": [
+      "7",
+      "5",
+      "10",
+      "30"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Uma semana tem 7 dias.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "MEDIA",
+    "idade": 7
+  },
+  {
+    "id": "102",
+    "enunciado": "Se um trem tem 8 vagões e 2 quebram, quantos vagões funcionam?",
+    "alternativas": [
+      "6",
+      "5",
+      "7",
+      "8"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "8 - 2 = 6 vagões funcionando.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "DIFICIL",
+    "idade": 7
+  },
+  {
+    "id": "103",
+    "enunciado": "O que os portugueses buscavam quando chegaram ao Brasil?",
+    "alternativas": [
+      "Novas terras e riquezas",
+      "Apenas passear",
+      "Fugir de uma guerra",
+      "Estudar os animais"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Os portugueses buscavam novas terras, riquezas e rotas de comércio.",
+    "categoria": "HISTORIA",
+    "dificuldade": "FACIL",
+    "idade": 8
+  },
+  {
+    "id": "104",
+    "enunciado": "Qual foi um dos primeiros produtos que o Brasil exportou para a Europa?",
+    "alternativas": [
+      "Pau-brasil",
+      "Café",
+      "Soja",
+      "Petróleo"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O pau-brasil, madeira usada para fazer tinta vermelha, foi um dos primeiros produtos exportados.",
+    "categoria": "HISTORIA",
+    "dificuldade": "MEDIA",
+    "idade": 8
+  },
+  {
+    "id": "105",
+    "enunciado": "Como eram chamados os primeiros habitantes do Brasil?",
+    "alternativas": [
+      "Povos indígenas",
+      "Colonos",
+      "Imigrantes",
+      "Bandeirantes"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Os primeiros habitantes do Brasil eram os povos indígenas.",
+    "categoria": "HISTORIA",
+    "dificuldade": "FACIL",
+    "idade": 8
+  },
+  {
+    "id": "106",
+    "enunciado": "O que eram as capitanias hereditárias?",
+    "alternativas": [
+      "Divisões de terra dadas pelo rei de Portugal",
+      "Times de futebol antigos",
+      "Escolas coloniais",
+      "Tipos de navio"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "As capitanias hereditárias foram uma forma de dividir e administrar o território brasileiro colonial.",
+    "categoria": "HISTORIA",
+    "dificuldade": "DIFICIL",
+    "idade": 8
+  },
+  {
+    "id": "107",
+    "enunciado": "Qual é o sinônimo de contente?",
+    "alternativas": [
+      "Feliz",
+      "Triste",
+      "Cansado",
+      "Bravo"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Contente e feliz têm o mesmo significado.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "FACIL",
+    "idade": 8
+  },
+  {
+    "id": "108",
+    "enunciado": "Qual destas palavras está no feminino?",
+    "alternativas": [
+      "Menina",
+      "Menino",
+      "Gato",
+      "Cachorro"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Menina é a forma feminina de menino.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "FACIL",
+    "idade": 8
+  },
+  {
+    "id": "109",
+    "enunciado": "Qual é o aumentativo de casa?",
+    "alternativas": [
+      "Casarão",
+      "Casinha",
+      "Casebre",
+      "Casaco"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Casarão é o aumentativo de casa.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "MEDIA",
+    "idade": 8
+  },
+  {
+    "id": "110",
+    "enunciado": "Na frase O gato preto dormiu o dia todo, qual é o sujeito?",
+    "alternativas": [
+      "O gato preto",
+      "Dormiu",
+      "O dia todo",
+      "Preto"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O gato preto é quem praticou a ação de dormir — é o sujeito.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "DIFICIL",
+    "idade": 8
+  },
+  {
+    "id": "111",
+    "enunciado": "Qual destas frases indica mais de uma pessoa fazendo a ação?",
+    "alternativas": [
+      "Os meninos correm no pátio.",
+      "O menino corre no pátio.",
+      "Eu corro no pátio.",
+      "Ela corre no pátio."
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Os meninos indica mais de um menino — a frase está no plural.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "FACIL",
+    "idade": 8
+  },
+  {
+    "id": "112",
+    "enunciado": "Qual é o feminino de ator?",
+    "alternativas": [
+      "Atriz",
+      "Atora",
+      "Atriza",
+      "Atoressa"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O feminino de ator é atriz.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "MEDIA",
+    "idade": 8
+  },
+  {
+    "id": "113",
+    "enunciado": "Qual destas palavras é um adjetivo?",
+    "alternativas": [
+      "Bonito",
+      "Casa",
+      "Correr",
+      "Rapidamente"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Bonito descreve uma característica — é um adjetivo.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "FACIL",
+    "idade": 8
+  },
+  {
+    "id": "114",
+    "enunciado": "Qual é o plural de lápis?",
+    "alternativas": [
+      "Lápis",
+      "Lápises",
+      "Lapizes",
+      "Lápi"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Lápis não muda no plural — a palavra é invariável.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "DIFICIL",
+    "idade": 8
+  },
+  {
+    "id": "115",
+    "enunciado": "Quanto é 8 x 3?",
+    "alternativas": [
+      "24",
+      "21",
+      "27",
+      "18"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "8 x 3 = 24.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "FACIL",
+    "idade": 8
+  },
+  {
+    "id": "116",
+    "enunciado": "Qual é o dobro de 15?",
+    "alternativas": [
+      "30",
+      "25",
+      "35",
+      "20"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O dobro de 15 é 30.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "MEDIA",
+    "idade": 8
+  },
+  {
+    "id": "117",
+    "enunciado": "Ana nasceu em 2015. Quantos anos ela tinha em 2023?",
+    "alternativas": [
+      "8",
+      "7",
+      "9",
+      "10"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "2023 - 2015 = 8 anos.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "DIFICIL",
+    "idade": 8
+  },
+  {
+    "id": "118",
+    "enunciado": "O que foi a Revolta dos Alfaiates (Inconfidência Baiana)?",
+    "alternativas": [
+      "Um movimento popular pela liberdade e igualdade na Bahia",
+      "Uma festa colonial",
+      "Um tipo de dança",
+      "Uma guerra com a Argentina"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Foi um movimento ocorrido na Bahia em 1798, que pedia liberdade e igualdade.",
+    "categoria": "HISTORIA",
+    "dificuldade": "DIFICIL",
+    "idade": 9
+  },
+  {
+    "id": "119",
+    "enunciado": "Quem eram os bandeirantes?",
+    "alternativas": [
+      "Exploradores que percorriam o território em busca de riquezas",
+      "Professores de escola",
+      "Jogadores de futebol",
+      "Cantores populares"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Os bandeirantes exploravam o interior do Brasil, muitas vezes em busca de ouro e escravizando povos indígenas.",
+    "categoria": "HISTORIA",
+    "dificuldade": "MEDIA",
+    "idade": 9
+  },
+  {
+    "id": "120",
+    "enunciado": "Como foi proclamada a independência do Brasil?",
+    "alternativas": [
+      "Como um ato simbólico, o Grito do Ipiranga",
+      "Por meio de uma votação popular",
+      "Por uma guerra longa contra Portugal",
+      "Por um tratado assinado na Espanha"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "A independência foi proclamada como um ato simbólico por Dom Pedro I, às margens do rio Ipiranga.",
+    "categoria": "HISTORIA",
+    "dificuldade": "DIFICIL",
+    "idade": 9
+  },
+  {
+    "id": "121",
+    "enunciado": "Qual cidade foi a primeira capital do Brasil colonial?",
+    "alternativas": [
+      "Salvador",
+      "Rio de Janeiro",
+      "Brasília",
+      "São Paulo"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Salvador foi a primeira capital do Brasil, de 1549 até 1763.",
+    "categoria": "HISTORIA",
+    "dificuldade": "FACIL",
+    "idade": 9
+  },
+  {
+    "id": "122",
+    "enunciado": "Qual é o antônimo de começar?",
+    "alternativas": [
+      "Terminar",
+      "Continuar",
+      "Repetir",
+      "Iniciar"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O antônimo de começar é terminar.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "FACIL",
+    "idade": 9
+  },
+  {
+    "id": "123",
+    "enunciado": "Qual destas palavras é um verbo?",
+    "alternativas": [
+      "Estudar",
+      "Estudioso",
+      "Estudante",
+      "Estudo"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Estudar indica uma ação — é um verbo no infinitivo.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "MEDIA",
+    "idade": 9
+  },
+  {
+    "id": "124",
+    "enunciado": "Na frase Os pássaros cantam ao amanhecer, qual é o predicado?",
+    "alternativas": [
+      "Cantam ao amanhecer",
+      "Os pássaros",
+      "Amanhecer",
+      "Ao"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Cantam ao amanhecer é o que se diz sobre o sujeito — é o predicado.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "DIFICIL",
+    "idade": 9
+  },
+  {
+    "id": "125",
+    "enunciado": "Qual é o plural de coração?",
+    "alternativas": [
+      "Corações",
+      "Coraçãos",
+      "Coraçõezinhos",
+      "Coraçãoes"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O plural de coração é corações.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "FACIL",
+    "idade": 9
+  },
+  {
+    "id": "126",
+    "enunciado": "Qual destas palavras tem hiato (duas vogais em sílabas separadas)?",
+    "alternativas": [
+      "Saída",
+      "Pai",
+      "Cadeira",
+      "Bola"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Em sa-í-da, o I e o A ficam em sílabas separadas — isso é hiato.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "DIFICIL",
+    "idade": 9
+  },
+  {
+    "id": "127",
+    "enunciado": "Qual é o superlativo de grande?",
+    "alternativas": [
+      "Grandíssimo",
+      "Mais grande",
+      "Grandão",
+      "Grandinho"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O superlativo de grande é grandíssimo.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "MEDIA",
+    "idade": 9
+  },
+  {
+    "id": "128",
+    "enunciado": "Qual destas frases usa a pontuação corretamente?",
+    "alternativas": [
+      "Você trouxe o livro?",
+      "Você trouxe o livro.",
+      "Você trouxe o livro!",
+      "Você trouxe o livro,"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Perguntas terminam com ponto de interrogação.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "FACIL",
+    "idade": 9
+  },
+  {
+    "id": "129",
+    "enunciado": "Qual é o diminutivo de papel?",
+    "alternativas": [
+      "Papelzinho",
+      "Papelinho",
+      "Papelão",
+      "Papelada"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O diminutivo de papel é papelzinho.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "MEDIA",
+    "idade": 9
+  },
+  {
+    "id": "130",
+    "enunciado": "Quanto é 45 dividido por 5?",
+    "alternativas": [
+      "9",
+      "8",
+      "10",
+      "7"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "45 ÷ 5 = 9.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "FACIL",
+    "idade": 9
+  },
+  {
+    "id": "131",
+    "enunciado": "Qual número está faltando: 5, 10, 15, ___, 25?",
+    "alternativas": [
+      "20",
+      "18",
+      "22",
+      "19"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "É a sequência dos múltiplos de 5: depois de 15 vem 20.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "MEDIA",
+    "idade": 9
+  },
+  {
+    "id": "132",
+    "enunciado": "Uma pizza foi dividida em 8 pedaços. Se 3 pessoas comeram 2 pedaços cada, quantos pedaços sobraram?",
+    "alternativas": [
+      "2",
+      "3",
+      "1",
+      "4"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "3 pessoas x 2 pedaços = 6 pedaços comidos. 8 - 6 = 2 pedaços sobraram.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "DIFICIL",
+    "idade": 9
+  },
+  {
+    "id": "133",
+    "enunciado": "O que foi a Guerra do Paraguai?",
+    "alternativas": [
+      "Um conflito entre o Paraguai e a Tríplice Aliança (Brasil, Argentina e Uruguai)",
+      "Uma guerra entre Brasil e Portugal",
+      "Uma disputa esportiva",
+      "Uma revolta indígena"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "A Guerra do Paraguai (1864-1870) foi um dos maiores conflitos da história da América do Sul.",
+    "categoria": "HISTORIA",
+    "dificuldade": "DIFICIL",
+    "idade": 10
+  },
+  {
+    "id": "134",
+    "enunciado": "Quem foi Zumbi dos Palmares?",
+    "alternativas": [
+      "Um líder do maior quilombo do Brasil colonial",
+      "Um rei português",
+      "Um explorador espanhol",
+      "Um pintor famoso"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Zumbi foi um importante líder na luta contra a escravidão, no Quilombo dos Palmares.",
+    "categoria": "HISTORIA",
+    "dificuldade": "MEDIA",
+    "idade": 10
+  },
+  {
+    "id": "135",
+    "enunciado": "O que era um quilombo?",
+    "alternativas": [
+      "Um lugar onde pessoas escravizadas fugidas se refugiavam",
+      "Uma escola colonial",
+      "Um tipo de igreja",
+      "Um mercado de especiarias"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Quilombos eram comunidades formadas por pessoas escravizadas que conseguiam fugir.",
+    "categoria": "HISTORIA",
+    "dificuldade": "FACIL",
+    "idade": 10
+  },
+  {
+    "id": "136",
+    "enunciado": "Em que século o Brasil aboliu a escravidão?",
+    "alternativas": [
+      "Século 19",
+      "Século 18",
+      "Século 20",
+      "Século 17"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "A Lei Áurea foi assinada em 1888, no século 19.",
+    "categoria": "HISTORIA",
+    "dificuldade": "MEDIA",
+    "idade": 10
+  },
+  {
+    "id": "137",
+    "enunciado": "Qual é a classe gramatical da palavra e na frase Comi arroz e feijão?",
+    "alternativas": [
+      "Conjunção",
+      "Substantivo",
+      "Verbo",
+      "Adjetivo"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "E liga duas palavras — é uma conjunção.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "MEDIA",
+    "idade": 10
+  },
+  {
+    "id": "138",
+    "enunciado": "Qual destas palavras é um pronome possessivo?",
+    "alternativas": [
+      "Meu",
+      "Casa",
+      "Bonito",
+      "Correr"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Meu indica posse — é um pronome possessivo.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "FACIL",
+    "idade": 10
+  },
+  {
+    "id": "139",
+    "enunciado": "Na frase Comprei um presente para ela, qual expressão é o objeto indireto?",
+    "alternativas": [
+      "Para ela",
+      "Um presente",
+      "Comprei",
+      "Presente"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Para ela indica a quem se destina a ação — é o objeto indireto.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "DIFICIL",
+    "idade": 10
+  },
+  {
+    "id": "140",
+    "enunciado": "Qual é o antônimo de permitir?",
+    "alternativas": [
+      "Proibir",
+      "Autorizar",
+      "Aceitar",
+      "Consentir"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O antônimo de permitir é proibir.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "FACIL",
+    "idade": 10
+  },
+  {
+    "id": "141",
+    "enunciado": "Qual destas palavras é acentuada por ser oxítona terminada em A?",
+    "alternativas": [
+      "Sofá",
+      "Cadeira",
+      "Médico",
+      "Fácil"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Sofá é oxítona (força na última sílaba) terminada em A, por isso é acentuada.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "DIFICIL",
+    "idade": 10
+  },
+  {
+    "id": "142",
+    "enunciado": "Qual é a forma correta: Nós vamos ou Nós vai?",
+    "alternativas": [
+      "Nós vamos",
+      "Nós vai",
+      "Nós vamo",
+      "Nós vaiz"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Com o pronome nós, o verbo ir fica vamos.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "FACIL",
+    "idade": 10
+  },
+  {
+    "id": "143",
+    "enunciado": "Qual destas frases tem concordância verbal correta?",
+    "alternativas": [
+      "Os alunos estudaram muito.",
+      "Os alunos estudou muito.",
+      "Os aluno estudaram muito.",
+      "Os alunos estuda muito."
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O verbo deve concordar em número e pessoa com o sujeito: os alunos estudaram.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "MEDIA",
+    "idade": 10
+  },
+  {
+    "id": "144",
+    "enunciado": "Qual é o plural de mão?",
+    "alternativas": [
+      "Mãos",
+      "Mões",
+      "Mãosinhas",
+      "Manzinhas"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O plural de mão é mãos.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "FACIL",
+    "idade": 10
+  },
+  {
+    "id": "145",
+    "enunciado": "Quanto é 15 x 6?",
+    "alternativas": [
+      "90",
+      "85",
+      "95",
+      "80"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "15 x 6 = 90.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "MEDIA",
+    "idade": 10
+  },
+  {
+    "id": "146",
+    "enunciado": "Se um ônibus sai às 8h e a viagem dura 2h30, a que horas ele chega?",
+    "alternativas": [
+      "10h30",
+      "10h",
+      "11h",
+      "10h15"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "8h + 2h30 = 10h30.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "FACIL",
+    "idade": 10
+  },
+  {
+    "id": "147",
+    "enunciado": "Qual número está faltando: 1, 1, 2, 3, 5, ___?",
+    "alternativas": [
+      "8",
+      "7",
+      "9",
+      "6"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "É a sequência de Fibonacci: cada número é a soma dos dois anteriores (3+5=8).",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "DIFICIL",
+    "idade": 10
+  },
+  {
+    "id": "148",
+    "enunciado": "O que foi a Semana de Arte Moderna de 1922?",
+    "alternativas": [
+      "Um evento que renovou a arte e a cultura brasileira",
+      "Uma guerra civil",
+      "Um tratado internacional",
+      "Uma eleição presidencial"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "A Semana de Arte Moderna, em São Paulo, marcou uma renovação artística e cultural no Brasil.",
+    "categoria": "HISTORIA",
+    "dificuldade": "DIFICIL",
+    "idade": 11
+  },
+  {
+    "id": "149",
+    "enunciado": "Quem foi Getúlio Vargas?",
+    "alternativas": [
+      "Um presidente que governou o Brasil por muitos anos no século 20",
+      "Um explorador colonial",
+      "Um rei de Portugal",
+      "Um cientista"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Getúlio Vargas foi presidente do Brasil em diferentes períodos entre 1930 e 1954.",
+    "categoria": "HISTORIA",
+    "dificuldade": "MEDIA",
+    "idade": 11
+  },
+  {
+    "id": "150",
+    "enunciado": "O que marcou o fim da Ditadura Militar no Brasil?",
+    "alternativas": [
+      "A redemocratização, com eleições diretas e a Constituição de 1988",
+      "A chegada dos portugueses",
+      "A Proclamação da República",
+      "A Guerra do Paraguai"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "A Ditadura Militar (1964-1985) terminou com a redemocratização do país.",
+    "categoria": "HISTORIA",
+    "dificuldade": "DIFICIL",
+    "idade": 11
+  },
+  {
+    "id": "151",
+    "enunciado": "Em que ano foi promulgada a Constituição Federal atual do Brasil?",
+    "alternativas": [
+      "1988",
+      "1822",
+      "1889",
+      "1500"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "A Constituição de 1988, conhecida como Constituição Cidadã, ainda está em vigor.",
+    "categoria": "HISTORIA",
+    "dificuldade": "MEDIA",
+    "idade": 11
+  },
+  {
+    "id": "152",
+    "enunciado": "Qual é a função da vírgula na frase Maria, venha aqui?",
+    "alternativas": [
+      "Isolar um vocativo (chamamento)",
+      "Separar itens de uma lista",
+      "Indicar uma pausa longa",
+      "Substituir um ponto final"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "A vírgula isola o vocativo Maria, usado para chamar alguém.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "MEDIA",
+    "idade": 11
+  },
+  {
+    "id": "153",
+    "enunciado": "Qual destas palavras é um substantivo abstrato?",
+    "alternativas": [
+      "Alegria",
+      "Mesa",
+      "Cachorro",
+      "Livro"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Alegria nomeia um sentimento, algo que não se pode tocar — é um substantivo abstrato.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "DIFICIL",
+    "idade": 11
+  },
+  {
+    "id": "154",
+    "enunciado": "Na frase Todos os alunos passaram na prova, qual é o sujeito?",
+    "alternativas": [
+      "Todos os alunos",
+      "Passaram",
+      "Na prova",
+      "A prova"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Todos os alunos é quem praticou a ação de passar — é o sujeito.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "FACIL",
+    "idade": 11
+  },
+  {
+    "id": "155",
+    "enunciado": "Qual é o sinônimo de árduo?",
+    "alternativas": [
+      "Difícil",
+      "Fácil",
+      "Rápido",
+      "Leve"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Árduo significa difícil, trabalhoso.",
+    "categoria": "PORTUGUES",
+    "dificuldade": "MEDIA",
+    "idade": 11
+  },
+  {
+    "id": "156",
+    "enunciado": "Qual destas frases está na voz passiva?",
+    "alternativas": [
+      "O bolo foi feito pela vovó.",
+      "A vovó fez o bolo.",
+      "A vovó faz bolos deliciosos.",
+      "A vovó vai fazer um bolo."
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Na voz passiva, o sujeito recebe a ação: o bolo foi feito (por alguém).",
+    "categoria": "GRAMATICA",
+    "dificuldade": "DIFICIL",
+    "idade": 11
+  },
+  {
+    "id": "157",
+    "enunciado": "Qual é o plural de qualquer?",
+    "alternativas": [
+      "Quaisquer",
+      "Qualqueres",
+      "Qualqueris",
+      "Quaisqueres"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "O plural de qualquer é quaisquer.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "DIFICIL",
+    "idade": 11
+  },
+  {
+    "id": "158",
+    "enunciado": "Complete: Se eu ___ tempo, viajaria.",
+    "alternativas": [
+      "tivesse",
+      "tenho",
+      "terei",
+      "tinha"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Em frases hipotéticas com se, usamos o pretérito imperfeito do subjuntivo: se eu tivesse.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "MEDIA",
+    "idade": 11
+  },
+  {
+    "id": "159",
+    "enunciado": "Qual destas palavras é um advérbio de negação?",
+    "alternativas": [
+      "Não",
+      "Sim",
+      "Talvez",
+      "Sempre"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Não indica negação — é um advérbio de negação.",
+    "categoria": "GRAMATICA",
+    "dificuldade": "FACIL",
+    "idade": 11
+  },
+  {
+    "id": "160",
+    "enunciado": "Se 3 canetas custam R$ 9, quanto custa 1 caneta?",
+    "alternativas": [
+      "R$ 3",
+      "R$ 2",
+      "R$ 4",
+      "R$ 6"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "9 ÷ 3 = 3 reais por caneta.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "FACIL",
+    "idade": 11
+  },
+  {
+    "id": "161",
+    "enunciado": "Um carro percorre 60 km em 1 hora. Quantos km ele percorre em 3 horas, na mesma velocidade?",
+    "alternativas": [
+      "180 km",
+      "120 km",
+      "200 km",
+      "160 km"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "60 x 3 = 180 km.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "MEDIA",
+    "idade": 11
+  },
+  {
+    "id": "162",
+    "enunciado": "Qual é o próximo número: 2, 6, 18, 54, ___?",
+    "alternativas": [
+      "162",
+      "108",
+      "216",
+      "150"
+    ],
+    "respostaCorreta": 0,
+    "explicacao": "Cada número é o triplo do anterior: 54 x 3 = 162.",
+    "categoria": "RACIOCINIO_LOGICO",
+    "dificuldade": "DIFICIL",
+    "idade": 11
   }
 ]
