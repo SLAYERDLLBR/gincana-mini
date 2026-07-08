@@ -6,20 +6,20 @@ const config: Config = {
     extend: {
       colors: {
         arena: {
-          DEFAULT: "#12163B",
-          deep: "#0B0E28",
-          light: "#1C2150",
+          DEFAULT: "#EAF2FF",
+          deep: "#1E2A4A",
+          light: "#F5F9FF",
         },
         azul: {
           DEFAULT: "#2F6FED",
-          soft: "#5D8FF2",
+          soft: "#4C82F0",
         },
         vermelho: {
-          DEFAULT: "#F2374A",
-          soft: "#F5616F",
+          DEFAULT: "#E63946",
+          soft: "#EA5A65",
         },
-        ouro: "#FFC53D",
-        giz: "#F5F3ED",
+        ouro: "#F5A623",
+        giz: "#1E2A4A",
         recreio: "#8B5CF6",
       },
       fontFamily: {
@@ -28,7 +28,8 @@ const config: Config = {
         hud: ["var(--font-hud)"],
       },
       boxShadow: {
-        arena: "0 20px 60px -20px rgba(0,0,0,0.6)",
+        arena: "0 20px 60px -20px rgba(30,41,59,0.2)",
+        suave: "0 4px 14px -4px rgba(30,41,59,0.18), 0 2px 4px -2px rgba(30,41,59,0.1)",
       },
       keyframes: {
         "spin-slow": {

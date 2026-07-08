@@ -2,8 +2,10 @@ import type { AvatarId, Categoria, CorFavoritaId, Dificuldade, Equipe, PerfilJog
 import bancoPerguntas from "@/data/perguntas.json";
 
 const PAUSA_REVELACAO_MS = 6000;
-const ATRASO_INICIAL_MS = 3000;
+const ATRASO_INICIAL_MS = 15000; // contagem regressiva de 15s antes da 1ª pergunta
+const TEMPO_RESPOSTA_SEGUNDOS = 30; // tempo fixo para responder, igual em todas as dificuldades
 const MAX_JOGADORES = 40;
+const PONTOS_POR_ACERTO = 100;
 
 export interface PerguntaArmazenada {
   id: string;
@@ -159,10 +161,8 @@ export function placarEquipe(sala: SalaEstado, equipe: Equipe): number {
   return sala.jogadores.filter((j) => j.equipe === equipe).reduce((soma, j) => soma + j.pontuacao, 0);
 }
 
-export function tempoLimitePorDificuldade(dificuldade: Dificuldade): number {
-  if (dificuldade === "FACIL") return 15;
-  if (dificuldade === "MEDIA") return 18;
-  return 20;
+export function tempoLimitePorDificuldade(_dificuldade: Dificuldade): number {
+  return TEMPO_RESPOSTA_SEGUNDOS;
 }
 
 function embaralhar<T>(itens: T[]): T[] {
@@ -202,6 +202,9 @@ function selecionarPerguntas(idadeAlvo: number): PerguntaArmazenada[] {
 export function iniciarPartida(sala: SalaEstado): { ok: true } | { ok: false; erro: string } {
   if (sala.status !== "LOBBY") return { ok: false, erro: "A partida já foi iniciada." };
   if (sala.jogadores.length < 2) return { ok: false, erro: "É preciso pelo menos 2 jogadores para iniciar." };
+  if (!sala.jogadores.every((j) => j.pronto)) {
+    return { ok: false, erro: "Nem todos os jogadores confirmaram que estão prontos." };
+  }
 
   const idadeAlvo = Math.round(sala.jogadores.reduce((s, j) => s + j.idade, 0) / sala.jogadores.length);
   const selecionadas = selecionarPerguntas(idadeAlvo);
@@ -250,15 +253,15 @@ export function submeterResposta(sala: SalaEstado, jogadorId: string, alternativ
   const tempoRespostaMs = Math.min(tempoLimiteMs, Date.now() - sala.perguntaComecouEm);
   const correta = alternativaEscolhida === sala.indiceCorretoRodadaAtual;
 
+  // Pontuação baseada SOMENTE em acerto/erro — o tempo de resposta é
+  // registrado apenas para estatísticas (ex: "jogador mais rápido"), sem
+  // nenhum efeito no placar.
   let pontosGanhos = 0;
   if (correta) {
     jogador.sequenciaAtual += 1;
     jogador.acertos += 1;
     jogador.maiorSequencia = Math.max(jogador.maiorSequencia, jogador.sequenciaAtual);
-    const tempoRestanteMs = Math.max(0, tempoLimiteMs - tempoRespostaMs);
-    const bonusVelocidade = Math.round(50 * (tempoRestanteMs / tempoLimiteMs));
-    const multiplicador = 1 + Math.min(jogador.sequenciaAtual - 1, 5) * 0.1;
-    pontosGanhos = Math.round((100 + bonusVelocidade) * multiplicador);
+    pontosGanhos = PONTOS_POR_ACERTO;
   } else {
     jogador.sequenciaAtual = 0;
   }
@@ -342,7 +345,26 @@ export interface EstadoPublico {
   pergunta: PerguntaPublica | null;
   revelacao: Omit<RevelacaoAtual, "revelarEm"> | null;
   destaques: DestaquesFinais | null;
+  placarAoVivo: {
+    placarAzul: number;
+    placarVermelho: number;
+    equipeLider: Equipe | "EMPATE";
+    melhorJogador: { nomeSessao: string; acertos: number; equipe: Equipe } | null;
+  };
   agora: number;
+}
+
+function calcularPlacarAoVivo(sala: SalaEstado): EstadoPublico["placarAoVivo"] {
+  const placarAzul = placarEquipe(sala, "AZUL");
+  const placarVermelho = placarEquipe(sala, "VERMELHO");
+  const melhor = [...sala.jogadores].filter((j) => j.acertos > 0).sort((a, b) => b.acertos - a.acertos)[0] ?? null;
+
+  return {
+    placarAzul,
+    placarVermelho,
+    equipeLider: placarAzul === placarVermelho ? "EMPATE" : placarAzul > placarVermelho ? "AZUL" : "VERMELHO",
+    melhorJogador: melhor ? { nomeSessao: melhor.nomeSessao, acertos: melhor.acertos, equipe: melhor.equipe } : null,
+  };
 }
 
 export function paraEstadoPublico(sala: SalaEstado): EstadoPublico {
@@ -377,6 +399,7 @@ export function paraEstadoPublico(sala: SalaEstado): EstadoPublico {
         }
       : null,
     destaques: sala.destaquesFinais,
+    placarAoVivo: calcularPlacarAoVivo(sala),
     agora: Date.now(),
   };
 }

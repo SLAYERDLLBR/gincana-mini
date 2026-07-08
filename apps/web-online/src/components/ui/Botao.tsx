@@ -9,10 +9,10 @@ interface BotaoProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const CLASSES_VARIANTE: Record<Variante, string> = {
-  azul: "bg-azul hover:bg-azul-soft text-giz shadow-arena",
-  vermelho: "bg-vermelho hover:bg-vermelho-soft text-giz shadow-arena",
-  ouro: "bg-ouro hover:brightness-110 text-arena-deep shadow-arena",
-  fantasma: "bg-white/5 hover:bg-white/10 text-giz border border-white/15",
+  azul: "bg-azul hover:bg-azul-soft text-white shadow-suave",
+  vermelho: "bg-vermelho hover:bg-vermelho-soft text-white shadow-suave",
+  ouro: "bg-ouro hover:brightness-105 text-arena-deep shadow-suave",
+  fantasma: "bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 shadow-suave",
 };
 
 export function Botao({ variante = "azul", className = "", ...props }: BotaoProps) {

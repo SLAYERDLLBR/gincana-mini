@@ -11,7 +11,7 @@ export default function TelaInicial() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="mb-2 flex items-center gap-2 text-xs font-hud uppercase tracking-[0.3em] text-giz/60"
+        className="mb-2 flex items-center gap-2 text-xs font-hud uppercase tracking-[0.3em] text-slate-600"
       >
         <span className="h-2 w-2 rounded-full bg-azul" /> Equipe Azul
         <span className="mx-1">vs</span>
@@ -26,7 +26,7 @@ export default function TelaInicial() {
       >
         GINCANA
       </motion.h1>
-      <p className="mt-3 max-w-md text-giz/70">
+      <p className="mt-3 max-w-md text-slate-600">
         Uma competição em tempo real para a turma toda. Escolha um time, responda rápido e ajude sua equipe a vencer.
       </p>
 

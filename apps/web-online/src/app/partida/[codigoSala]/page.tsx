@@ -51,12 +51,12 @@ export default function PaginaPartida() {
   if (!estado || !estado.pergunta) {
     return (
       <main className="flex min-h-dvh items-center justify-center">
-        <p className="text-giz/60">Aguardando o início da partida...</p>
+        <p className="text-slate-600">Aguardando o início da partida...</p>
       </main>
     );
   }
 
-  const { pergunta, revelacao } = estado;
+  const { pergunta, revelacao, placarAoVivo } = estado;
   const faltamParaComecar = Math.ceil((pergunta.comecaEm - estado.agora) / 1000);
   const emContagem = faltamParaComecar > 0;
   const segundosRestantes = emContagem
@@ -94,19 +94,28 @@ export default function PaginaPartida() {
 
   return (
     <main className="mx-auto flex min-h-dvh max-w-2xl flex-col px-4 py-6">
-      <header className="mb-6 flex items-center justify-between">
-        <div>
-          <p className="text-xs uppercase tracking-widest text-giz/50">
-            Pergunta {pergunta.numero}/{pergunta.total} · {nomeCategoria}
-          </p>
-          {revelacao && (
-            <p className="mt-1 font-hud text-sm">
-              <span className="text-azul-soft">🔵 {revelacao.placarAzul}</span>
-              {"  "}
-              <span className="text-vermelho-soft">🔴 {revelacao.placarVermelho}</span>
-            </p>
-          )}
+      {/* Acompanhamento ao vivo: equipe líder + aluno com mais acertos */}
+      <div className="mb-4 flex items-center justify-between rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-suave">
+        <div className="flex items-center gap-3 font-hud text-base">
+          <span className={`text-azul-soft ${placarAoVivo.equipeLider === "AZUL" ? "font-bold" : ""}`}>
+            🔵 {placarAoVivo.placarAzul}
+          </span>
+          <span className={`text-vermelho-soft ${placarAoVivo.equipeLider === "VERMELHO" ? "font-bold" : ""}`}>
+            🔴 {placarAoVivo.placarVermelho}
+          </span>
         </div>
+        {placarAoVivo.melhorJogador && (
+          <p className="text-xs text-slate-500">
+            🏅 <span className="font-semibold text-slate-700">{placarAoVivo.melhorJogador.nomeSessao}</span> lidera com{" "}
+            {placarAoVivo.melhorJogador.acertos} acerto{placarAoVivo.melhorJogador.acertos === 1 ? "" : "s"}
+          </p>
+        )}
+      </div>
+
+      <header className="mb-6 flex items-center justify-between">
+        <p className="text-xs uppercase tracking-widest text-slate-500">
+          Pergunta {pergunta.numero}/{pergunta.total} · {nomeCategoria}
+        </p>
         <AnelTempo segundosRestantes={segundosRestantes} segundosTotal={pergunta.tempoLimiteSegundos} />
       </header>
 
@@ -121,7 +130,7 @@ export default function PaginaPartida() {
 
       <div className="grid flex-1 grid-cols-1 gap-4 sm:grid-cols-2">
         {pergunta.alternativas.map((alternativa, indice) => {
-          let estiloExtra = "border-white/15 bg-white/5 hover:bg-white/10";
+          let estiloExtra = "border-slate-200 bg-white hover:bg-slate-50";
 
           if (revelacao) {
             if (indice === revelacao.alternativaCorreta) {
@@ -129,7 +138,7 @@ export default function PaginaPartida() {
             } else if (indice === alternativaEscolhida) {
               estiloExtra = "border-vermelho bg-vermelho/20 text-vermelho-soft";
             } else {
-              estiloExtra = "border-white/10 bg-white/5 opacity-50";
+              estiloExtra = "border-slate-200 bg-white opacity-50";
             }
           } else if (indice === alternativaEscolhida) {
             estiloExtra = "border-azul bg-azul/20";
@@ -153,7 +162,7 @@ export default function PaginaPartida() {
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-6 rounded-2xl bg-white/5 px-5 py-4 text-giz/80"
+            className="mt-6 rounded-2xl bg-white px-5 py-4 text-slate-700"
           >
             💡 {revelacao.explicacao}
           </motion.p>

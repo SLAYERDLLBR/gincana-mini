@@ -9,7 +9,7 @@ export function CartaoJogador({ jogador, souEu }: { jogador: JogadorEstado; souE
   return (
     <div
       className={`flex items-center gap-3 rounded-2xl border px-4 py-3 ${
-        souEu ? "border-ouro/60 bg-white/10" : "border-white/10 bg-white/5"
+        souEu ? "border-ouro/60 bg-slate-50" : "border-slate-200 bg-white"
       }`}
     >
       <span className="text-2xl">{avatar?.emoji ?? "🙂"}</span>
@@ -17,7 +17,7 @@ export function CartaoJogador({ jogador, souEu }: { jogador: JogadorEstado; souE
         <p className="truncate font-semibold">
           {jogador.nomeSessao} {jogador.organizador && <span className="text-ouro">★</span>}
         </p>
-        <p className="text-xs text-giz/50">{jogador.idade} anos</p>
+        <p className="text-xs text-slate-500">{jogador.idade} anos</p>
       </div>
       <span className={`text-lg ${jogador.pronto ? "opacity-100" : "opacity-30"}`} aria-label={jogador.pronto ? "Pronto" : "Não pronto"}>
         {jogador.pronto ? "✅" : "⏳"}

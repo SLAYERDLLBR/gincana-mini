@@ -61,40 +61,40 @@ function FormularioPerfil() {
   return (
     <main className="flex min-h-dvh flex-col items-center px-6 py-12">
       <h1 className="font-display text-3xl">{modo === "criar" ? "Criar sala" : "Entrar na sala"}</h1>
-      <p className="mb-8 mt-1 text-sm text-giz/60">Esse perfil vale só para esta partida.</p>
+      <p className="mb-8 mt-1 text-sm text-slate-600">Esse perfil vale só para esta partida.</p>
 
       <div className="w-full max-w-md space-y-7">
         {modo === "entrar" && (
           <div>
-            <label className="mb-2 block text-sm font-semibold text-giz/80">Código da sala</label>
+            <label className="mb-2 block text-sm font-semibold text-slate-700">Código da sala</label>
             <input
               value={codigoSala}
               onChange={(e) => setCodigoSala(e.target.value.toUpperCase().slice(0, 5))}
               placeholder="EX: A7K2P"
-              className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-center font-hud text-2xl uppercase tracking-[0.3em] placeholder:text-giz/30"
+              className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-center font-hud text-2xl uppercase tracking-[0.3em] placeholder:text-slate-400"
             />
           </div>
         )}
 
         <div>
-          <label className="mb-2 block text-sm font-semibold text-giz/80">Seu nome</label>
+          <label className="mb-2 block text-sm font-semibold text-slate-700">Seu nome</label>
           <input
             value={nomeSessao}
             onChange={(e) => setNomeSessao(e.target.value.slice(0, 20))}
             placeholder="Como a turma vai te ver"
-            className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 placeholder:text-giz/30"
+            className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 placeholder:text-slate-400"
           />
         </div>
 
         <div>
-          <label className="mb-2 block text-sm font-semibold text-giz/80">Sua idade</label>
+          <label className="mb-2 block text-sm font-semibold text-slate-700">Sua idade</label>
           <div className="flex flex-wrap gap-2">
             {IDADES_DISPONIVEIS.map((valor) => (
               <button
                 key={valor}
                 onClick={() => setIdade(valor)}
                 className={`h-12 w-12 rounded-full font-hud text-lg transition ${
-                  idade === valor ? "bg-ouro text-arena-deep" : "border border-white/15 bg-white/5"
+                  idade === valor ? "bg-ouro text-arena-deep" : "border border-slate-200 bg-white"
                 }`}
               >
                 {valor}
@@ -104,7 +104,7 @@ function FormularioPerfil() {
         </div>
 
         <div>
-          <label className="mb-2 block text-sm font-semibold text-giz/80">Escolha um avatar</label>
+          <label className="mb-2 block text-sm font-semibold text-slate-700">Escolha um avatar</label>
           <div className="grid grid-cols-4 gap-3">
             {AVATARES.map((a) => (
               <button
@@ -112,7 +112,7 @@ function FormularioPerfil() {
                 onClick={() => setAvatar(a.id)}
                 aria-label={a.label}
                 className={`flex aspect-square items-center justify-center rounded-2xl text-3xl transition ${
-                  avatar === a.id ? "border-2 border-recreio bg-recreio/30" : "border border-white/10 bg-white/5"
+                  avatar === a.id ? "border-2 border-recreio bg-recreio/30" : "border border-slate-200 bg-white"
                 }`}
               >
                 {a.emoji}
@@ -122,7 +122,7 @@ function FormularioPerfil() {
         </div>
 
         <div>
-          <label className="mb-2 block text-sm font-semibold text-giz/80">Cor favorita</label>
+          <label className="mb-2 block text-sm font-semibold text-slate-700">Cor favorita</label>
           <div className="flex gap-3">
             {CORES_FAVORITAS.map((c) => (
               <button

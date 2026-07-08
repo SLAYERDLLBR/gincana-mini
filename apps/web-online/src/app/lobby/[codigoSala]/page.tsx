@@ -50,7 +50,7 @@ export default function PaginaLobby() {
   if (!estado) {
     return (
       <main className="flex min-h-dvh flex-col items-center justify-center px-6 text-center">
-        <p className="text-giz/60">
+        <p className="text-slate-600">
           {erro ?? `Conectando à sala ${codigoSala}...`} Se a tela ficar assim por muito tempo, volte e crie/entre na
           sala novamente.
         </p>
@@ -66,6 +66,8 @@ export default function PaginaLobby() {
   const jogadoresAzul = estado.jogadores.filter((j) => j.equipe === "AZUL");
   const jogadoresVermelho = estado.jogadores.filter((j) => j.equipe === "VERMELHO");
   const diferencaTimes = Math.abs(jogadoresAzul.length - jogadoresVermelho.length);
+  const totalProntos = estado.jogadores.filter((j) => j.pronto).length;
+  const todosProntos = estado.jogadores.length >= 2 && totalProntos === estado.jogadores.length;
 
   async function trocarEquipe(equipe: Equipe) {
     await escolherEquipe(codigoSala, equipe);
@@ -84,10 +86,10 @@ export default function PaginaLobby() {
     <main className="mx-auto flex min-h-dvh max-w-3xl flex-col px-4 py-8">
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <p className="text-xs uppercase tracking-widest text-giz/50">Código da sala</p>
+          <p className="text-xs uppercase tracking-widest text-slate-500">Código da sala</p>
           <p className="font-hud text-3xl tracking-[0.2em]">{estado.codigoSala}</p>
         </div>
-        <p className="text-sm text-giz/60">{estado.jogadores.length} jogador(es)</p>
+        <p className="text-sm text-slate-600">{estado.jogadores.length} jogador(es)</p>
       </div>
 
       {erro && <p className="mb-4 rounded-xl bg-vermelho/20 px-4 py-2 text-sm text-vermelho-soft">{erro}</p>}
@@ -136,17 +138,26 @@ export default function PaginaLobby() {
         </section>
       </div>
 
-      <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-        {!souOrganizador && (
+      <div className="mt-8 flex flex-col items-center gap-4">
+        <p className="font-hud text-lg text-slate-600">
+          Prontos: <span className={todosProntos ? "text-ouro" : ""}>{totalProntos}</span>/{estado.jogadores.length}
+        </p>
+
+        <div className="flex w-full flex-col gap-3 sm:flex-row">
           <Botao variante={eu?.pronto ? "fantasma" : "ouro"} className="flex-1" onClick={alternarPronto}>
             {eu?.pronto ? "Cancelar (não estou pronto)" : "Estou pronto!"}
           </Botao>
-        )}
-        {souOrganizador && (
-          <Botao variante="azul" className="flex-1" disabled={estado.jogadores.length < 2} onClick={aoIniciar}>
-            {estado.jogadores.length < 2 ? "Aguardando mais jogadores..." : "Iniciar partida"}
-          </Botao>
-        )}
+
+          {souOrganizador && (
+            <Botao variante="azul" className="flex-1" disabled={!todosProntos} onClick={aoIniciar}>
+              {estado.jogadores.length < 2
+                ? "Aguardando mais jogadores..."
+                : todosProntos
+                  ? "Iniciar partida"
+                  : "Aguardando todos confirmarem..."}
+            </Botao>
+          )}
+        </div>
       </div>
     </main>
   );

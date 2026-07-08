@@ -21,7 +21,7 @@ export function AnelTempo({ segundosRestantes, segundosTotal, tamanho = 96 }: An
           cx={tamanho / 2}
           cy={tamanho / 2}
           r={raio}
-          stroke="rgba(255,255,255,0.12)"
+          stroke="rgba(30,41,59,0.1)"
           strokeWidth={8}
           fill="none"
         />
@@ -38,7 +38,7 @@ export function AnelTempo({ segundosRestantes, segundosTotal, tamanho = 96 }: An
           transition={{ duration: 0.3, ease: "linear" }}
         />
       </svg>
-      <span className="absolute inset-0 flex items-center justify-center font-hud text-2xl" aria-hidden>
+      <span className="absolute inset-0 flex items-center justify-center font-hud text-2xl text-slate-800" aria-hidden>
         {Math.max(0, segundosRestantes)}
       </span>
     </div>

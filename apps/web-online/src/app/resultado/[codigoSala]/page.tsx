@@ -21,7 +21,7 @@ export default function PaginaResultado() {
   if (!destaques) {
     return (
       <main className="flex min-h-dvh flex-col items-center justify-center gap-4 px-6 text-center">
-        <p className="text-giz/60">Não encontramos o resultado desta partida.</p>
+        <p className="text-slate-600">Não encontramos o resultado desta partida.</p>
         <Botao variante="fantasma" onClick={() => router.push("/")}>
           Voltar ao início
         </Botao>
@@ -63,7 +63,7 @@ export default function PaginaResultado() {
           {destaques.ranking.map((jogador, indice) => (
             <li
               key={`${jogador.nomeSessao}-${indice}`}
-              className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-2"
+              className="flex items-center justify-between rounded-xl border border-slate-200 bg-white px-4 py-2"
             >
               <span>
                 {indice + 1}º {jogador.nomeSessao}{" "}
@@ -91,10 +91,10 @@ export default function PaginaResultado() {
 
 function CartaoDestaque({ titulo, valor, detalhe }: { titulo: string; valor?: string; detalhe?: string }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4">
-      <p className="text-xs uppercase tracking-wide text-giz/50">{titulo}</p>
+    <div className="rounded-2xl border border-slate-200 bg-white px-4 py-4">
+      <p className="text-xs uppercase tracking-wide text-slate-500">{titulo}</p>
       <p className="mt-1 font-display text-lg">{valor ?? "—"}</p>
-      {detalhe && <p className="text-xs text-giz/50">{detalhe}</p>}
+      {detalhe && <p className="text-xs text-slate-500">{detalhe}</p>}
     </div>
   );
 }
